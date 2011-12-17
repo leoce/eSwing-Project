@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model-hints>
+	<model name="com.eswinggolf.portal.data.layer.club.model.ESClub">
+		<field name="clubId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="clubName" type="String" />
+		<field name="clubDesc" type="String" />
+		<field name="loft" type="int" />
+		<field name="nomSr" type="int" />
+		<field name="nomSpeed" type="int" />
+		<field name="launchAngle" type="int" />
+		<field name="coR" type="double" />
+		<field name="weight" type="int" />
+		<field name="model" type="String" />
+		<field name="active" type="boolean" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="com.eswinggolf.portal.data.layer.club.model.ESPlayerClub">
+		<field name="playerClubId" type="long" />
+		<field name="clubId" type="long" />
+		<field name="playerId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="clubDesc" type="String" />
+		<field name="loft" type="int" />
+		<field name="nomSr" type="int" />
+		<field name="nomSpeed" type="int" />
+		<field name="coR" type="double" />
+		<field name="weight" type="int" />
+		<field name="model" type="String" />
+		<field name="active" type="boolean" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData">
+		<field name="shotDataId" type="long" />
+		<field name="playerId" type="long" />
+		<field name="playerClubId" type="long" />
+		<field name="productSerialNo" type="int" />
+		<field name="launchMonitor" type="boolean" />
+		<field name="simulate" type="boolean" />
+		<field name="active" type="boolean" />
+		<field name="clubLoft" type="int" />
+		<field name="clubSpeed" type="int" />
+		<field name="faceAngle" type="int" />
+		<field name="swingPath" type="int" />
+		<field name="spinAxisAngle" type="int" />
+		<field name="launchAngle" type="int" />
+		<field name="ballSpeed" type="int" />
+		<field name="ballSpinRate" type="int" />
+		<field name="ballAngleOfAttack" type="double" />
+		<field name="ballCompression" type="double" />
+		<field name="stepTimeIncrement" type="double" />
+		<field name="windSpeed" type="int" />
+		<field name="windDirection" type="int" />
+		<field name="ambientTemp" type="int" />
+		<field name="barPressureAlt" type="int" />
+		<field name="relativeHumid" type="int" />
+		<field name="fairwayFirmness" type="double" />
+		<field name="createDate" type="Date" >
+			<hint name="year-range-delta">2</hint>
+			<hint name="year-range-future">false</hint>
+			<hint name="show-time">false</hint>
+		</field>
+		<field name="modifiedDate" type="Date" />
+	</model>
+	<model name="com.eswinggolf.portal.data.layer.club.model.ESShotDataSharing">
+		<field name="shotDataSharingId" type="long" />
+		<field name="shotDataId" type="long" />
+		<field name="playerId" type="long" />
+		<field name="userId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="active" type="boolean" />
+		<field name="createDate" type="Date" />
+		<field name="modifyDate" type="Date" />
+	</model>
+</model-hints>

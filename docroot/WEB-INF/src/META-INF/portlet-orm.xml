@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.eswinggolf.portal.data.layer.club.model.impl.ESClubModelImpl">
+		<attributes>
+			<id name="clubId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="clubName" />
+			<basic name="clubDesc" />
+			<basic name="loft" />
+			<basic name="nomSr" />
+			<basic name="nomSpeed" />
+			<basic name="launchAngle" />
+			<basic name="coR" />
+			<basic name="weight" />
+			<basic name="model" />
+			<basic name="active">
+				<column name="ACTIVE_" />
+			</basic>
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerClubModelImpl">
+		<attributes>
+			<id name="playerClubId" />
+			<basic name="clubId" />
+			<basic name="playerId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<basic name="clubDesc" />
+			<basic name="loft" />
+			<basic name="nomSr" />
+			<basic name="nomSpeed" />
+			<basic name="coR" />
+			<basic name="weight" />
+			<basic name="model" />
+			<basic name="active">
+				<column name="ACTIVE_" />
+			</basic>
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerShotDataModelImpl">
+		<attributes>
+			<id name="shotDataId" />
+			<basic name="playerId" />
+			<basic name="playerClubId" />
+			<basic name="productSerialNo" />
+			<basic name="launchMonitor" />
+			<basic name="simulate" />
+			<basic name="active">
+				<column name="ACTIVE_" />
+			</basic>
+			<basic name="clubLoft" />
+			<basic name="clubSpeed" />
+			<basic name="faceAngle" />
+			<basic name="swingPath" />
+			<basic name="spinAxisAngle" />
+			<basic name="launchAngle" />
+			<basic name="ballSpeed" />
+			<basic name="ballSpinRate" />
+			<basic name="ballAngleOfAttack" />
+			<basic name="ballCompression" />
+			<basic name="stepTimeIncrement" />
+			<basic name="windSpeed" />
+			<basic name="windDirection" />
+			<basic name="ambientTemp" />
+			<basic name="barPressureAlt" />
+			<basic name="relativeHumid" />
+			<basic name="fairwayFirmness" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.eswinggolf.portal.data.layer.club.model.impl.ESShotDataSharingModelImpl">
+		<attributes>
+			<id name="shotDataSharingId" />
+			<basic name="shotDataId" />
+			<basic name="playerId" />
+			<basic name="userId" />
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="active">
+				<column name="ACTIVE_" />
+			</basic>
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifyDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESClubImpl" name="ESClub">
+		<table name="es_ESClub" />
+		<attributes />
+	</entity>
+	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerClubImpl" name="ESPlayerClub">
+		<table name="es_ESPlayerClub" />
+		<attributes />
+	</entity>
+	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerShotDataImpl" name="ESPlayerShotData">
+		<table name="es_ESPlayerShotData" />
+		<attributes />
+	</entity>
+	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESShotDataSharingImpl" name="ESShotDataSharing">
+		<table name="es_ESShotDataSharing" />
+		<attributes />
+	</entity>
+</entity-mappings>

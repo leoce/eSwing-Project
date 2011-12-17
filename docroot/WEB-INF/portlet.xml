@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<portlet-app
+	version="2.0"
+	xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+>
+	<portlet>
+		<portlet-name>ClubProfile</portlet-name>
+		<display-name>ClubProfile</display-name>
+        <portlet-class>com.eswinggolf.club.profile.portlet.ESClubPortlet</portlet-class>
+		<init-param>
+			<name>view-jsp</name>
+			<value>/jsp/club/view.jsp</value>
+		</init-param>
+		<init-param>
+            <name>add-process-action-success-action</name>
+            <value>false</value>
+        </init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+        <resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Club Admin</title>
+			<short-title>Club Admin</short-title>
+			<keywords>Club Admin</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+    <portlet>
+        <portlet-name>PlayerClub</portlet-name>
+        <display-name>PlayerClub</display-name>
+        <portlet-class>com.eswinggolf.club.profile.portlet.ESPlayerClubPortlet</portlet-class>
+        <init-param>
+            <name>view-jsp</name>
+            <value>/jsp/playerclub/view.jsp</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+        </supports>
+        <resource-bundle>content.Language</resource-bundle>
+        <portlet-info>
+            <title>Player Club</title>
+            <short-title>Player Club</short-title>
+            <keywords>Player Club</keywords>
+        </portlet-info>
+    </portlet>
+    <portlet>
+        <portlet-name>PlayerClubTable</portlet-name>
+        <display-name>PlayerClubTable</display-name>
+        <portlet-class>com.eswinggolf.club.profile.portlet.ESPlayerClubPortlet</portlet-class>
+        <init-param>
+            <name>view-jsp</name>
+            <value>/jsp/clubtable/view_table.jsp</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+        </supports>
+        <resource-bundle>content.Language</resource-bundle>
+        <portlet-info>
+            <title>Player Club Table</title>
+            <short-title>Player Club Table</short-title>
+            <keywords>Player Club Table</keywords>
+        </portlet-info>
+    </portlet>
+    <portlet>
+		<portlet-name>ShotData</portlet-name>
+		<display-name>ShotData</display-name>
+        <portlet-class>com.eswinggolf.player.shotdata.portlet.ESPlayerShotDataPortlet</portlet-class>
+		<init-param>
+			<name>view-jsp</name>
+			<value>/jsp/shotdata/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+        <resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Shot Data</title>
+			<short-title>Shot Data</short-title>
+			<keywords>Shot Data</keywords>
+		</portlet-info>
+	</portlet>
+    <portlet>
+        <portlet-name>ShotDataColumn</portlet-name>
+        <display-name>ShotDataColumn</display-name>
+        <portlet-class>com.eswinggolf.player.shotdata.portlet.ESPlayerShotDataPortlet</portlet-class>
+        <init-param>
+            <name>view-jsp</name>
+            <value>/jsp/shotdatatable/view.jsp</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+        </supports>
+        <resource-bundle>content.Language</resource-bundle>
+        <portlet-info>
+            <title>Shot Data Table</title>
+            <short-title>Shot Data Table</short-title>
+            <keywords>Shot Data Table</keywords>
+        </portlet-info>
+    </portlet>
+    <portlet>
+        <portlet-name>TrajectorySimulation</portlet-name>
+        <display-name>TrajectorySimulation</display-name>
+        <portlet-class>com.eswinggolf.player.shotdata.portlet.ESPlayerShotDataPortlet</portlet-class>
+        <init-param>
+            <name>view-jsp</name>
+            <value>/jsp/trajectory/view.jsp</value>
+        </init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+        </supports>
+        <resource-bundle>content.Language</resource-bundle>
+        <portlet-info>
+            <title>Trajectory Model</title>
+            <short-title>Trajectory Model</short-title>
+            <keywords>Trajectory Model</keywords>
+        </portlet-info>
+    </portlet>
+</portlet-app>

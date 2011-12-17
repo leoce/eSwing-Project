@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram-geometry>
+    <grid>
+        <visible>true</visible>
+    </grid>
+    <guides>
+        <visible>false</visible>
+    </guides>
+    <node>
+        <id>Entity#ESClub</id>
+        <bounds x="330" y="40"/>
+    </node>
+    <node>
+        <id>Entity#ESPlayerClub</id>
+        <bounds x="330" y="190"/>
+    </node>
+    <node>
+        <id>Entity#ESPlayerShotData</id>
+        <bounds x="80" y="190"/>
+    </node>
+    <node>
+        <id>Entity#ESShotDataSharing</id>
+        <bounds x="80" y="40"/>
+    </node>
+</diagram-geometry>

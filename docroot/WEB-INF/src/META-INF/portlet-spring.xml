@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESClubLocalService" class="com.eswinggolf.portal.data.layer.club.service.impl.ESClubLocalServiceImpl" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESClubLocalServiceUtil" class="com.eswinggolf.portal.data.layer.club.service.ESClubLocalServiceUtil">
+		<property name="service" ref="com.eswinggolf.portal.data.layer.club.service.ESClubLocalService" />
+	</bean>
+	<bean id="com.eswinggolf.portal.data.layer.club.service.persistence.ESClubPersistence" class="com.eswinggolf.portal.data.layer.club.service.persistence.ESClubPersistenceImpl" parent="basePersistence" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalService" class="com.eswinggolf.portal.data.layer.club.service.impl.ESPlayerClubLocalServiceImpl" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalServiceUtil" class="com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalServiceUtil">
+		<property name="service" ref="com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalService" />
+	</bean>
+	<bean id="com.eswinggolf.portal.data.layer.club.service.persistence.ESPlayerClubPersistence" class="com.eswinggolf.portal.data.layer.club.service.persistence.ESPlayerClubPersistenceImpl" parent="basePersistence" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalService" class="com.eswinggolf.portal.data.layer.club.service.impl.ESPlayerShotDataLocalServiceImpl" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil" class="com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil">
+		<property name="service" ref="com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalService" />
+	</bean>
+	<bean id="com.eswinggolf.portal.data.layer.club.service.persistence.ESPlayerShotDataPersistence" class="com.eswinggolf.portal.data.layer.club.service.persistence.ESPlayerShotDataPersistenceImpl" parent="basePersistence" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalService" class="com.eswinggolf.portal.data.layer.club.service.impl.ESShotDataSharingLocalServiceImpl" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalServiceUtil" class="com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalServiceUtil">
+		<property name="service" ref="com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalService" />
+	</bean>
+	<bean id="com.eswinggolf.portal.data.layer.club.service.persistence.ESShotDataSharingPersistence" class="com.eswinggolf.portal.data.layer.club.service.persistence.ESShotDataSharingPersistenceImpl" parent="basePersistence" />
+</beans>

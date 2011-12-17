@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.eswinggolf.portal.data.layer.club.model.ESClub" />
+	<import class="com.eswinggolf.portal.data.layer.club.model.ESPlayerClub" />
+	<import class="com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData" />
+	<import class="com.eswinggolf.portal.data.layer.club.model.ESShotDataSharing" />
+	<class name="com.eswinggolf.portal.data.layer.club.model.impl.ESClubImpl" table="es_ESClub">
+		<cache usage="read-write" />
+		<id name="clubId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="clubName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="clubDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="loft" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="nomSr" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="nomSpeed" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="launchAngle" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="coR" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="weight" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="model" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="active" column="active_" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerClubImpl" table="es_ESPlayerClub">
+		<cache usage="read-write" />
+		<id name="playerClubId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="clubId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="clubDesc" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="loft" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="nomSr" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="nomSpeed" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="coR" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="weight" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="model" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="active" column="active_" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerShotDataImpl" table="es_ESPlayerShotData">
+		<cache usage="read-write" />
+		<id name="shotDataId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="playerClubId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="productSerialNo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="launchMonitor" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="simulate" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="active" column="active_" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="clubLoft" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="clubSpeed" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="faceAngle" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="swingPath" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="spinAxisAngle" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="launchAngle" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="ballSpeed" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="ballSpinRate" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="ballAngleOfAttack" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="ballCompression" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="stepTimeIncrement" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="windSpeed" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="windDirection" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="ambientTemp" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="barPressureAlt" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="relativeHumid" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="fairwayFirmness" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.eswinggolf.portal.data.layer.club.model.impl.ESShotDataSharingImpl" table="es_ESShotDataSharing">
+		<cache usage="read-write" />
+		<id name="shotDataSharingId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="shotDataId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="active" column="active_" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifyDate" type="org.hibernate.type.TimestampType" />
+	</class>
+</hibernate-mapping>

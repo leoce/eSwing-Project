@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_0_0.dtd">
+<service-builder package-path="com.eswinggolf.portal.data.layer.club">
+	<author>evangelistalc</author>
+	<namespace>es</namespace>
+
+	<entity name="ESClub" local-service="true" remote-service="false">
+    
+    	<!-- PK fields -->
+        <column name="clubId" type="long" primary="true" />
+        
+        <!-- FK fields -->
+        <column name="companyId" type="long" />
+        <column name="groupId" type="long" />
+        
+        <!-- Audit fields -->
+        
+        <column name="userId" type="long" />
+        <column name="clubName" type="String" />
+        <column name="clubDesc" type="String" />
+        <column name="loft" type="int" />
+        <column name="nomSr" type="int" />
+        <column name="nomSpeed" type="int" />
+        <column name="launchAngle" type="int" />
+        <column name="coR" type="double" />
+        <column name="weight" type="int" />
+        <column name="model" type="String" />
+        <column name="active" type="boolean" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        
+        <order by="asc">
+        	<order-column name="clubName" />
+        </order>
+        
+        <finder return-type="Collection" name="ClubName">
+        	<finder-column name="groupId" />
+        	<finder-column name="clubName" />
+        </finder>
+        
+        <finder return-type="Collection" name="GroupId">
+        	<finder-column name="groupId" />
+        </finder>
+        
+        <finder return-type="Collection" name="CompanyId">
+        	<finder-column name="companyId" />
+        </finder>
+     </entity>
+     
+     	<entity name="ESPlayerClub" local-service="true" remote-service="false">
+    
+    	<!-- Primary key -->
+        <column name="playerClubId" type="long" primary="true" />
+        
+        <!-- Foreign key -->
+        <column name="clubId" type="long" primary="false"/>
+        <column name="playerId" type="long" primary="false" />
+        <column name="companyId" type="long" />
+        <column name="groupId" type="long" />
+        
+        <!-- Audit fields -->
+        <column name="userId" type="long" />
+        <column name="clubDesc" type="String" />
+        <column name="loft" type="int" />
+        <column name="nomSr" type="int" />
+        <column name="nomSpeed" type="int" />
+        <column name="coR" type="double" />
+        <column name="weight" type="int" />
+        <column name="model" type="String" />
+        <column name="active" type="boolean" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        <!-- Order -->
+        <order by="asc">
+        	<order-column name="clubId" />
+        </order>
+        
+        <!-- Finder -->
+        
+        <finder return-type="Collection" name="PlayerClubGroup">
+        	<finder-column name="groupId" />
+        </finder>
+        
+        <finder return-type="Collection" name="PlayerClubCompany">
+        	<finder-column name="companyId" />
+        </finder>
+        
+        <finder return-type="Collection" name="AllClubs">
+        	<finder-column name="clubId" />
+        	<finder-column name="active" />
+        </finder>
+        
+        <finder return-type="Collection" name="PlayerClubs">
+        	<finder-column name="playerId" />
+        </finder>
+	</entity>
+	
+	<entity name="ESPlayerShotData" local-service="true" remote-service="false">
+    
+   		<!-- Primary key -->
+   		
+        <column name="shotDataId" type="long" primary="true" />
+        
+        <!-- Foreign keys -->
+        
+        <column name="playerId" type="long" primary="false"/>
+        <column name="playerClubId" type="long" primary="false"/>
+        <column name="productSerialNo" type="int" primary="false" />
+        <!-- Audit fields -->
+        
+        <column name="launchMonitor" type="boolean" />
+        <column name="simulate" type="boolean" />
+        <column name="active" type="boolean" />
+		<column name="clubLoft" type="int" />
+		<column name="clubSpeed" type="int" />
+        <column name="faceAngle" type="int" />
+        <column name="swingPath" type="int" />
+        <column name="spinAxisAngle" type="int" />
+        <column name="launchAngle" type="int" />
+        <column name="ballSpeed" type="int" />
+        <column name="ballSpinRate" type="int" />
+        <column name="ballAngleOfAttack" type="double" />
+        <column name="ballCompression" type="double" />
+        <column name="stepTimeIncrement" type="double" />
+        <column name="windSpeed" type="int" />
+        <column name="windDirection" type="int" />
+        <column name="ambientTemp" type="int" />
+        <column name="barPressureAlt" type="int" />
+        <column name="relativeHumid" type="int" />
+        <column name="fairwayFirmness" type="double" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        <!-- Order -->
+        
+        <order by="asc">
+        	<order-column name="playerId" />
+        	<order-column name="createDate" />
+        </order>
+        
+        <!-- Finder -->
+        
+        <finder return-type="Collection" name="G_PlayerShotData">
+        	<finder-column name="playerId" />
+        </finder>
+        
+        <finder return-type="Collection" name="G_ClubShotData">
+        	<finder-column name="playerId" />
+        	<finder-column name="playerClubId" />
+        </finder>
+        
+        <finder return-type="Collection" name="G_ProductSerialNo">
+        	<finder-column name="playerId" />
+        	<finder-column name="productSerialNo" />
+        </finder>
+        
+		<finder return-type="Collection" name="G_ShotDataByDate">
+        	<finder-column name="playerId" />
+        	<finder-column name="createDate" />
+        </finder>
+        
+    </entity>
+	
+    <entity name="ESShotDataSharing" local-service="true" remote-service="false">
+		
+		<!-- PK fields -->	
+		<column name="shotDataSharingId" type="long" primary="true" />
+		
+		<!-- FK fields -->
+		<column name="shotDataId" type="long" />
+		<column name="playerId" type="long" />
+		<column name="userId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		
+		<!-- Audit fields -->
+		
+		<column name="active" type="boolean" />
+		<column name="createDate" type="Date" />
+		<column name="modifyDate" type="Date" />
+		
+		<!-- Order fields -->
+		<order by="asc">
+			<order-column name="groupId" />
+		</order>
+		
+		<!-- Finder fields -->
+		<finder return-type="Collection" name="PlayerShared">
+			<finder-column name="playerId" />
+		</finder>
+		
+		<finder return-type="Collection" name="GroupShared">
+			<finder-column name="groupId" />
+		</finder>
+		
+		<finder return-type="Collection" name="CompanyShared">
+			<finder-column name="companyId" />
+		</finder>
+		
+	</entity>
+	
+</service-builder>
