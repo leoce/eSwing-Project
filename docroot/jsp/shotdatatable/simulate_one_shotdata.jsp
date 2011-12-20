@@ -112,7 +112,7 @@ if (shotData == null){
     <liferay-ui:search-container-results>
    		<%
    		    
-    		List<ESPlayerShotData> tempResults = ActionUtil.
+    		List<ESPlayerShotData> tempResults = ActionUtil.getPlayerShotData(renderRequest);
 
     	results = ListUtil.subList(
         	tempResults, searchContainer.getStart(), searchContainer.getEnd());
