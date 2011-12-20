@@ -21,4 +21,9 @@
 		<property name="service" ref="com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalService" />
 	</bean>
 	<bean id="com.eswinggolf.portal.data.layer.club.service.persistence.ESShotDataSharingPersistence" class="com.eswinggolf.portal.data.layer.club.service.persistence.ESShotDataSharingPersistenceImpl" parent="basePersistence" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalService" class="com.eswinggolf.portal.data.layer.club.service.impl.ESTrialShotDataLocalServiceImpl" />
+	<bean id="com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil" class="com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil">
+		<property name="service" ref="com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalService" />
+	</bean>
+	<bean id="com.eswinggolf.portal.data.layer.club.service.persistence.ESTrialShotDataPersistence" class="com.eswinggolf.portal.data.layer.club.service.persistence.ESTrialShotDataPersistenceImpl" parent="basePersistence" />
 </beans>

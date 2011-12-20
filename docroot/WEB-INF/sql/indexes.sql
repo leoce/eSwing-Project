@@ -15,3 +15,8 @@ create index IX_81F8C6BA on es_ESPlayerShotData (playerId, productSerialNo);
 create index IX_F5F5D2A9 on es_ESShotDataSharing (companyId);
 create index IX_98F4EF6B on es_ESShotDataSharing (groupId);
 create index IX_B75CE12F on es_ESShotDataSharing (playerId);
+
+create index IX_61C2FEF1 on es_ESTrialShotData (playerId);
+create index IX_173D6C2F on es_ESTrialShotData (playerId, createDate);
+create index IX_C377D57 on es_ESTrialShotData (playerId, playerClubId);
+create index IX_482D7643 on es_ESTrialShotData (playerId, productSerialNo);

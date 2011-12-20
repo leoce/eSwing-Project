@@ -1,5 +1,3 @@
-drop table es_ESClub;
-drop table es_ESPlayerClub;
 create table es_ESClub (
 	clubId LONG not null primary key,
 	companyId LONG,
@@ -77,4 +75,33 @@ create table es_ESShotDataSharing (
 	active_ BOOLEAN,
 	createDate DATE null,
 	modifyDate DATE null
+);
+
+create table es_ESTrialShotData (
+	shotDataId LONG not null primary key,
+	playerId LONG,
+	playerClubId LONG,
+	productSerialNo INTEGER,
+	launchMonitor BOOLEAN,
+	simulate BOOLEAN,
+	active_ BOOLEAN,
+	clubLoft INTEGER,
+	clubSpeed INTEGER,
+	faceAngle INTEGER,
+	swingPath INTEGER,
+	spinAxisAngle INTEGER,
+	launchAngle INTEGER,
+	ballSpeed INTEGER,
+	ballSpinRate INTEGER,
+	ballAngleOfAttack DOUBLE,
+	ballCompression DOUBLE,
+	stepTimeIncrement DOUBLE,
+	windSpeed INTEGER,
+	windDirection INTEGER,
+	ambientTemp INTEGER,
+	barPressureAlt INTEGER,
+	relativeHumid INTEGER,
+	fairwayFirmness DOUBLE,
+	createDate DATE null,
+	modifiedDate DATE null
 );

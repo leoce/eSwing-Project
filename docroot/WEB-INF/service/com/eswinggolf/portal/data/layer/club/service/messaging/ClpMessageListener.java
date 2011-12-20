@@ -19,6 +19,7 @@ import com.eswinggolf.portal.data.layer.club.service.ESClubLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalServiceUtil;
+import com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -53,6 +54,8 @@ public class ClpMessageListener implements MessageListener {
 			ESPlayerShotDataLocalServiceUtil.clearService();
 
 			ESShotDataSharingLocalServiceUtil.clearService();
+
+			ESTrialShotDataLocalServiceUtil.clearService();
 		}
 	}
 

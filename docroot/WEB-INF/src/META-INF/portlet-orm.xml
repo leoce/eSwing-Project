@@ -121,6 +121,43 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="com.eswinggolf.portal.data.layer.club.model.impl.ESTrialShotDataModelImpl">
+		<attributes>
+			<id name="shotDataId" />
+			<basic name="playerId" />
+			<basic name="playerClubId" />
+			<basic name="productSerialNo" />
+			<basic name="launchMonitor" />
+			<basic name="simulate" />
+			<basic name="active">
+				<column name="ACTIVE_" />
+			</basic>
+			<basic name="clubLoft" />
+			<basic name="clubSpeed" />
+			<basic name="faceAngle" />
+			<basic name="swingPath" />
+			<basic name="spinAxisAngle" />
+			<basic name="launchAngle" />
+			<basic name="ballSpeed" />
+			<basic name="ballSpinRate" />
+			<basic name="ballAngleOfAttack" />
+			<basic name="ballCompression" />
+			<basic name="stepTimeIncrement" />
+			<basic name="windSpeed" />
+			<basic name="windDirection" />
+			<basic name="ambientTemp" />
+			<basic name="barPressureAlt" />
+			<basic name="relativeHumid" />
+			<basic name="fairwayFirmness" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+		</attributes>
+	</mapped-superclass>
 	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESClubImpl" name="ESClub">
 		<table name="es_ESClub" />
 		<attributes />
@@ -135,6 +172,10 @@
 	</entity>
 	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESShotDataSharingImpl" name="ESShotDataSharing">
 		<table name="es_ESShotDataSharing" />
+		<attributes />
+	</entity>
+	<entity class="com.eswinggolf.portal.data.layer.club.model.impl.ESTrialShotDataImpl" name="ESTrialShotData">
+		<table name="es_ESTrialShotData" />
 		<attributes />
 	</entity>
 </entity-mappings>

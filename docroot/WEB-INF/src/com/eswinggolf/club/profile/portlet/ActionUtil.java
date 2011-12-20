@@ -16,12 +16,15 @@ import com.eswinggolf.player.shotdata.trajectory.model.ShotData;
 import com.eswinggolf.portal.data.layer.club.model.ESClub;
 import com.eswinggolf.portal.data.layer.club.model.ESPlayerClub;
 import com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData;
+import com.eswinggolf.portal.data.layer.club.model.ESTrialShotData;
 import com.eswinggolf.portal.data.layer.club.model.impl.ESClubImpl;
 import com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerClubImpl;
 import com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerShotDataImpl;
+import com.eswinggolf.portal.data.layer.club.model.impl.ESTrialShotDataImpl;
 import com.eswinggolf.portal.data.layer.club.service.ESClubLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil;
+import com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.model.ESPlayer;
 import com.eswinggolf.portal.data.layer.model.impl.ESPlayerImpl;
 import com.eswinggolf.portal.data.layer.service.ESPlayerLocalServiceUtil;
@@ -62,6 +65,12 @@ public class ActionUtil {
 
     }
     
+    /**
+     * Used by the view.jsp to grab the active clubs from the database.
+     * @param request
+     * @return
+     */
+    
     public static List<ESClub> getActiveClubs(RenderRequest request) {
 
         List<ESClub> tempResults;
@@ -96,8 +105,8 @@ public class ActionUtil {
     }
     
     /**
-     * Used by the view.jsp to grab the products from the database.
-     * @param request
+     * Used by the view.jsp to grab the clubs from the database.
+     * @param clubId
      * @return
      */
     public static ESClub getClub(long clubId) throws SystemException, PortalException{
@@ -152,7 +161,7 @@ public class ActionUtil {
     
   
     /**
-     * Used by the view.jsp to grab the products from the database.
+     * Used by the view.jsp to grab the player clubs from the database.
      * @param request
      * @return
      */
@@ -210,16 +219,21 @@ public class ActionUtil {
     }
     
     /**
-     * Used by the view.jsp to grab the products from the database.
+     * Used by the view.jsp to grab the shot data from the database.
      * @param request
      * @return
      */
     public static List<ESPlayerShotData> getPlayerShotData(RenderRequest request) {
 
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
         List<ESPlayerShotData> tempResults;
 
         try {
-            tempResults = ESPlayerShotDataLocalServiceUtil.getESPlayerShotDatas(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+            tempResults = ESPlayerShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
         }
 
         catch (SystemException ex) {
@@ -231,7 +245,207 @@ public class ActionUtil {
 
     }
     
+    /**
+     * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
+     * @param request
+     * @param begin - beginning date
+     * @param end - ending date
+     * @return
+     */
+    public static List<ESPlayerShotData> getTrialShotDataByScopeDate(RenderRequest request, Date begin, Date end) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESPlayerShotData> tempResults;
+
+        try {
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
     
+    /**
+     * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
+     * @param request
+     * @param begin - beginning date
+     * @param end - ending date
+     * @return
+     */
+    public static List<ESPlayerShotData> getTrialShotDataByDate(RenderRequest request, Date begin, Date end) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESPlayerShotData> tempResults;
+
+        try {
+        	
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
+    
+    /**
+     * Used by the view.jsp to grab the Player Shot Data by club from the database.
+     * @param request
+     * @param begin - beginning date
+     * @param end - ending date
+     * @return
+     */
+    public static List<ESPlayerShotData> getTrialShotDataByClub(RenderRequest request, long clubId) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESPlayerShotData> tempResults;
+
+        try {
+            tempResults = ESPlayerShotDataLocalServiceUtil.getAllClubShotByPlayer(playerId, clubId);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
+    
+    /**
+     * Used by the view.jsp to grab the shot data from the database.
+     * @param request
+     * @return
+     */
+    public static List<ESTrialShotData> getTrialShotData(RenderRequest request) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESTrialShotData> tempResults;
+
+        try {
+            tempResults = ESTrialShotDataLocalServiceUtil.getESTrialShotDatas(QueryUtil.ALL_POS,QueryUtil.ALL_POS);
+
+        }catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
+    
+    /**
+     * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
+     * @param request
+     * @param begin - beginning date
+     * @param end - ending date
+     * @return
+     */
+    public static List<ESPlayerShotData> getPlayerShotDataByScopeDate(RenderRequest request, Date begin, Date end) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESPlayerShotData> tempResults;
+
+        try {
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
+    
+    /**
+     * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
+     * @param request
+     * @param begin - beginning date
+     * @param end - ending date
+     * @return
+     */
+    public static List<ESPlayerShotData> getPlayerShotDataByDate(RenderRequest request, Date begin, Date end) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESPlayerShotData> tempResults;
+
+        try {
+        	
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
+    
+    /**
+     * Used by the view.jsp to grab the Player Shot Data by club from the database.
+     * @param request
+     * @param begin - beginning date
+     * @param end - ending date
+     * @return
+     */
+    public static List<ESPlayerShotData> getPlayerShotDataByClub(RenderRequest request, long clubId) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+       long playerId = themeDisplay.getUserId();
+
+        List<ESPlayerShotData> tempResults;
+
+        try {
+            tempResults = ESPlayerShotDataLocalServiceUtil.getAllClubShotByPlayer(playerId, clubId);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
     /**
      * Used by the view.jsp to grab the products from the database.
      * @param request
