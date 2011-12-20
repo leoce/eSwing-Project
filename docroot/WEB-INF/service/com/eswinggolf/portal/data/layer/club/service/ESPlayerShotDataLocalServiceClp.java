@@ -448,12 +448,12 @@ public class ESPlayerShotDataLocalServiceClp
 	}
 
 	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getClubShotDataByDate(
-		long playerId, java.util.Date begin, java.util.Date end)
+		long playerId, java.util.Date myDate)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		MethodHandler methodHandler = new MethodHandler(_getClubShotDataByDateMethodKey15,
-				playerId, begin, end);
+				playerId, myDate);
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -521,6 +521,5 @@ public class ESPlayerShotDataLocalServiceClp
 	private MethodKey _getAllClubShotByPlayerMethodKey14 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getAllClubShotByPlayer", long.class, long.class);
 	private MethodKey _getClubShotDataByDateMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
-			"getClubShotDataByDate", long.class, java.util.Date.class,
-			java.util.Date.class);
+			"getClubShotDataByDate", long.class, java.util.Date.class);
 }

@@ -207,4 +207,37 @@ public interface ESTrialShotDataLocalService {
 		com.eswinggolf.portal.data.layer.club.model.ESTrialShotData esTrialShotData,
 		boolean merge)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Gets all Player shot data out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getAllPlayerShotData(
+		long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Gets all Player shot data out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getAllClubShotByPlayer(
+		long playerId, long clubId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Gets all Player shot data by date out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getClubShotDataByDate(
+		long playerId, java.util.Date begin, java.util.Date end)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

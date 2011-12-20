@@ -14,7 +14,12 @@
 
 package com.eswinggolf.portal.data.layer.club.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
+import com.eswinggolf.portal.data.layer.club.model.ESTrialShotData;
 import com.eswinggolf.portal.data.layer.club.service.base.ESTrialShotDataLocalServiceBaseImpl;
+import com.liferay.portal.kernel.exception.SystemException;
 
 /**
  * The implementation of the e s trial shot data local service.
@@ -37,4 +42,49 @@ import com.eswinggolf.portal.data.layer.club.service.base.ESTrialShotDataLocalSe
  */
 public class ESTrialShotDataLocalServiceImpl
 	extends ESTrialShotDataLocalServiceBaseImpl {
+	
+	/**
+     * Gets all Player shot data out of the database.
+     *
+     * @return
+     * @throws SystemException
+     */
+    public List<ESTrialShotData> getAllPlayerShotData(long playerId)
+        throws SystemException {
+
+        List<ESTrialShotData> trialShot =
+            esTrialShotDataPersistence.findByG_TrialShotData(playerId);
+        return trialShot;
+    }
+    
+    /**
+     * Gets all Player shot data out of the database.
+     *
+     * @return
+     * @throws SystemException
+     */
+    public List<ESTrialShotData> getAllClubShotByPlayer(long playerId, long clubId)
+        throws SystemException {
+
+        List<ESTrialShotData> trialShot =
+            esTrialShotDataPersistence.findByG_ClubTrialShotData(playerId, clubId);
+        return trialShot;
+    }
+    
+    
+    
+    /**
+     * Gets all Player shot data by date out of the database.
+     *
+     * @return
+     * @throws SystemException
+     */
+    public List<ESTrialShotData> getClubShotDataByDate(long playerId, Date begin, Date end)
+        throws SystemException {
+
+        List<ESTrialShotData> trialShot =
+            esTrialShotDataPersistence.findByG_TrialShotDataByDate(playerId, begin);
+            
+        return trialShot;
+    }
 }

@@ -238,6 +238,6 @@ public interface ESPlayerShotDataLocalService {
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getClubShotDataByDate(
-		long playerId, java.util.Date begin, java.util.Date end)
+		long playerId, java.util.Date myDate)
 		throws com.liferay.portal.kernel.exception.SystemException;
 }

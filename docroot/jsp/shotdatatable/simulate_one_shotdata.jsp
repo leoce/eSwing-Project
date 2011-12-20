@@ -29,7 +29,7 @@ if (shotData == null){
 			<liferay-ui:panel title="Filter Shot Data" collapsible="true" extended="true">
 				<aui:layout>
 					<aui:column columnWidth="50" first="true">
-						<aui:input id="filterByDate"name="filter" inlineLabel="right" 
+						<aui:input id="filterByDate" name="filter" inlineLabel="right" 
 						type="radio" label="Date" value="date" />
 			
 						<aui:select id="viewByDate" name="viewByDate" width="40">
@@ -111,7 +111,8 @@ if (shotData == null){
 
     <liferay-ui:search-container-results>
    		<%
-    		List<ESPlayerShotData> tempResults = ActionUtil.getPlayerShotData(renderRequest);
+   		    
+    		List<ESPlayerShotData> tempResults = ActionUtil.
 
     	results = ListUtil.subList(
         	tempResults, searchContainer.getStart(), searchContainer.getEnd());
@@ -159,9 +160,13 @@ if (shotData == null){
 </aui:form>
 <aui:script>
 AUI().use('node', function(A) {
-    var filter = A.one('#filterByDate');
-    var clubName = A.one('#clubName');
-    var viewByDate = A.one('#viewByDate');
+    var filterByDate = A.all('#filterByDate');
+    var clubName = A.all('#clubName');
+    var viewByDate = A.all('#viewByDate');
+    
+    if (filterByDate){
+    	alert('filter : '+filterByDate.getAttribute('value'));
+    }
     
     if (clubName){
     	alert('club name : '+clubName.text());

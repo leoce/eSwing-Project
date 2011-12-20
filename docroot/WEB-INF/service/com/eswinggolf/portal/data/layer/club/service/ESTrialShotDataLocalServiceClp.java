@@ -391,6 +391,90 @@ public class ESTrialShotDataLocalServiceClp
 		return (com.eswinggolf.portal.data.layer.club.model.ESTrialShotData)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getAllPlayerShotData(
+		long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getAllPlayerShotDataMethodKey13,
+				playerId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getAllClubShotByPlayer(
+		long playerId, long clubId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getAllClubShotByPlayerMethodKey14,
+				playerId, clubId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getClubShotDataByDate(
+		long playerId, java.util.Date begin, java.util.Date end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getClubShotDataByDateMethodKey15,
+				playerId, begin, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData>)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -432,4 +516,11 @@ public class ESTrialShotDataLocalServiceClp
 			"updateESTrialShotData",
 			com.eswinggolf.portal.data.layer.club.model.ESTrialShotData.class,
 			boolean.class);
+	private MethodKey _getAllPlayerShotDataMethodKey13 = new MethodKey(_classLoaderProxy.getClassName(),
+			"getAllPlayerShotData", long.class);
+	private MethodKey _getAllClubShotByPlayerMethodKey14 = new MethodKey(_classLoaderProxy.getClassName(),
+			"getAllClubShotByPlayer", long.class, long.class);
+	private MethodKey _getClubShotDataByDateMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
+			"getClubShotDataByDate", long.class, java.util.Date.class,
+			java.util.Date.class);
 }

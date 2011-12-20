@@ -2262,6 +2262,8 @@ public class ESClubPersistenceImpl extends BasePersistenceImpl<ESClub>
 	protected ESPlayerShotDataPersistence esPlayerShotDataPersistence;
 	@BeanReference(type = ESShotDataSharingPersistence.class)
 	protected ESShotDataSharingPersistence esShotDataSharingPersistence;
+	@BeanReference(type = ESTrialShotDataPersistence.class)
+	protected ESTrialShotDataPersistence esTrialShotDataPersistence;
 	@BeanReference(type = ResourcePersistence.class)
 	protected ResourcePersistence resourcePersistence;
 	@BeanReference(type = UserPersistence.class)

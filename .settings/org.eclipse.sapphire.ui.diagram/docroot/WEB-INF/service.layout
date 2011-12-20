@@ -22,4 +22,8 @@
         <id>Entity#ESShotDataSharing</id>
         <bounds x="80" y="40"/>
     </node>
+    <node>
+        <id>Entity#ESTrialShotData</id>
+        <bounds x="50" y="50"/>
+    </node>
 </diagram-geometry>

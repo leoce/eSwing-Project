@@ -161,6 +161,7 @@
         	<finder-column name="createDate" />
         </finder>
         
+        
     </entity>
 	
     <entity name="ESShotDataSharing" local-service="true" remote-service="false">
@@ -200,5 +201,68 @@
 		</finder>
 		
 	</entity>
+	
+	<entity name="ESTrialShotData" local-service="true" remote-service="false">
+    
+   		<!-- Primary key -->
+   		
+        <column name="shotDataId" type="long" primary="true" />
+        
+        <!-- Foreign keys -->
+        
+        <column name="playerId" type="long" primary="false"/>
+        <column name="playerClubId" type="long" primary="false"/>
+        <column name="productSerialNo" type="int" primary="false" />
+        <!-- Audit fields -->
+        
+        <column name="launchMonitor" type="boolean" />
+        <column name="simulate" type="boolean" />
+        <column name="active" type="boolean" />
+		<column name="clubLoft" type="int" />
+		<column name="clubSpeed" type="int" />
+        <column name="faceAngle" type="int" />
+        <column name="swingPath" type="int" />
+        <column name="spinAxisAngle" type="int" />
+        <column name="launchAngle" type="int" />
+        <column name="ballSpeed" type="int" />
+        <column name="ballSpinRate" type="int" />
+        <column name="ballAngleOfAttack" type="double" />
+        <column name="ballCompression" type="double" />
+        <column name="stepTimeIncrement" type="double" />
+        <column name="windSpeed" type="int" />
+        <column name="windDirection" type="int" />
+        <column name="ambientTemp" type="int" />
+        <column name="barPressureAlt" type="int" />
+        <column name="relativeHumid" type="int" />
+        <column name="fairwayFirmness" type="double" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+        
+        <!-- Order -->
+        
+        <order by="asc">
+        	<order-column name="playerId" />
+        	<order-column name="createDate" />
+        </order>
+        
+        <!-- Finder -->
+        
+        <finder return-type="Collection" name="G_TrialShotData">
+        	<finder-column name="playerId" />
+        </finder>
+        
+        <finder return-type="Collection" name="G_ClubTrialShotData">
+        	<finder-column name="playerId" />
+        	<finder-column name="playerClubId" />
+        </finder>
+        
+        
+		<finder return-type="Collection" name="G_TrialShotDataByDate">
+        	<finder-column name="playerId" />
+        	<finder-column name="createDate" />
+        </finder>
+        
+        
+     </entity>
 	
 </service-builder>

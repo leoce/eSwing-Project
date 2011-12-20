@@ -224,6 +224,44 @@ public class ESTrialShotDataLocalServiceWrapper
 			merge);
 	}
 
+	/**
+	* Gets all Player shot data out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getAllPlayerShotData(
+		long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _esTrialShotDataLocalService.getAllPlayerShotData(playerId);
+	}
+
+	/**
+	* Gets all Player shot data out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getAllClubShotByPlayer(
+		long playerId, long clubId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _esTrialShotDataLocalService.getAllClubShotByPlayer(playerId,
+			clubId);
+	}
+
+	/**
+	* Gets all Player shot data by date out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getClubShotDataByDate(
+		long playerId, java.util.Date begin, java.util.Date end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _esTrialShotDataLocalService.getClubShotDataByDate(playerId,
+			begin, end);
+	}
+
 	public ESTrialShotDataLocalService getWrappedESTrialShotDataLocalService() {
 		return _esTrialShotDataLocalService;
 	}

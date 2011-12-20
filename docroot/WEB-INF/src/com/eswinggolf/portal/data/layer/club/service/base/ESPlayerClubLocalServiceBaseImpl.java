@@ -19,10 +19,12 @@ import com.eswinggolf.portal.data.layer.club.service.ESClubLocalService;
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalService;
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalService;
 import com.eswinggolf.portal.data.layer.club.service.ESShotDataSharingLocalService;
+import com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalService;
 import com.eswinggolf.portal.data.layer.club.service.persistence.ESClubPersistence;
 import com.eswinggolf.portal.data.layer.club.service.persistence.ESPlayerClubPersistence;
 import com.eswinggolf.portal.data.layer.club.service.persistence.ESPlayerShotDataPersistence;
 import com.eswinggolf.portal.data.layer.club.service.persistence.ESShotDataSharingPersistence;
+import com.eswinggolf.portal.data.layer.club.service.persistence.ESTrialShotDataPersistence;
 
 import com.liferay.counter.service.CounterLocalService;
 
@@ -395,6 +397,44 @@ public abstract class ESPlayerClubLocalServiceBaseImpl
 	}
 
 	/**
+	 * Gets the e s trial shot data local service.
+	 *
+	 * @return the e s trial shot data local service
+	 */
+	public ESTrialShotDataLocalService getESTrialShotDataLocalService() {
+		return esTrialShotDataLocalService;
+	}
+
+	/**
+	 * Sets the e s trial shot data local service.
+	 *
+	 * @param esTrialShotDataLocalService the e s trial shot data local service
+	 */
+	public void setESTrialShotDataLocalService(
+		ESTrialShotDataLocalService esTrialShotDataLocalService) {
+		this.esTrialShotDataLocalService = esTrialShotDataLocalService;
+	}
+
+	/**
+	 * Gets the e s trial shot data persistence.
+	 *
+	 * @return the e s trial shot data persistence
+	 */
+	public ESTrialShotDataPersistence getESTrialShotDataPersistence() {
+		return esTrialShotDataPersistence;
+	}
+
+	/**
+	 * Sets the e s trial shot data persistence.
+	 *
+	 * @param esTrialShotDataPersistence the e s trial shot data persistence
+	 */
+	public void setESTrialShotDataPersistence(
+		ESTrialShotDataPersistence esTrialShotDataPersistence) {
+		this.esTrialShotDataPersistence = esTrialShotDataPersistence;
+	}
+
+	/**
 	 * Gets the counter local service.
 	 *
 	 * @return the counter local service
@@ -556,6 +596,10 @@ public abstract class ESPlayerClubLocalServiceBaseImpl
 	protected ESShotDataSharingLocalService esShotDataSharingLocalService;
 	@BeanReference(type = ESShotDataSharingPersistence.class)
 	protected ESShotDataSharingPersistence esShotDataSharingPersistence;
+	@BeanReference(type = ESTrialShotDataLocalService.class)
+	protected ESTrialShotDataLocalService esTrialShotDataLocalService;
+	@BeanReference(type = ESTrialShotDataPersistence.class)
+	protected ESTrialShotDataPersistence esTrialShotDataPersistence;
 	@BeanReference(type = CounterLocalService.class)
 	protected CounterLocalService counterLocalService;
 	@BeanReference(type = ResourceLocalService.class)
