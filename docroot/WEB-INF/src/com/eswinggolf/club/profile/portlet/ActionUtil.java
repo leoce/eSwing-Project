@@ -262,7 +262,7 @@ public class ActionUtil {
         List<ESPlayerShotData> tempResults;
 
         try {
-            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin);
         }
 
         catch (SystemException ex) {
@@ -277,11 +277,11 @@ public class ActionUtil {
     /**
      * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
      * @param request
-     * @param begin - beginning date
+     * @param created - beginning date
      * @param end - ending date
      * @return
      */
-    public static List<ESPlayerShotData> getTrialShotDataByDate(RenderRequest request, Date begin, Date end) {
+    public static List<ESPlayerShotData> getTrialShotDataByDate(RenderRequest request, Date created) {
 
     	ThemeDisplay themeDisplay =
             (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
@@ -292,7 +292,7 @@ public class ActionUtil {
 
         try {
         	
-            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, created);
         }
 
         catch (SystemException ex) {
@@ -376,7 +376,7 @@ public class ActionUtil {
         List<ESPlayerShotData> tempResults;
 
         try {
-            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin);
         }
 
         catch (SystemException ex) {
@@ -391,11 +391,11 @@ public class ActionUtil {
     /**
      * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
      * @param request
-     * @param begin - beginning date
+     * @param created - beginning date
      * @param end - ending date
      * @return
      */
-    public static List<ESPlayerShotData> getPlayerShotDataByDate(RenderRequest request, Date begin, Date end) {
+    public static List<ESPlayerShotData> getPlayerShotDataByDate(RenderRequest request, Date created) {
 
     	ThemeDisplay themeDisplay =
             (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
@@ -406,7 +406,7 @@ public class ActionUtil {
 
         try {
         	
-            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, begin, end);
+            tempResults = ESPlayerShotDataLocalServiceUtil.getClubShotDataByDate(playerId, created);
         }
 
         catch (SystemException ex) {

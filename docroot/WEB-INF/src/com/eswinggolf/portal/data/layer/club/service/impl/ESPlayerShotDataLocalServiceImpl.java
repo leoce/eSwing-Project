@@ -113,14 +113,27 @@ public class ESPlayerShotDataLocalServiceImpl
      * @return
      * @throws SystemException
      */
-    public List<ESPlayerShotData> getClubShotDataByDate(long playerId, Date myDate)
+    public List<ESPlayerShotData> getClubShotDataByDate(long playerId, Date created)
         throws SystemException {
 
         List<ESPlayerShotData> shotData =
-            esPlayerShotDataPersistence.findByG_ShotDataByDate(playerId, myDate);
+            esPlayerShotDataPersistence.findByG_ShotDataByDate(playerId, created);
             
         return shotData;
     }
     
-   
+    /**
+     * Gets all Player shot data by date out of the database.
+     *
+     * @return
+     * @throws SystemException
+     */
+    public List<ESPlayerShotData> getClubShotDataByScopeDate(long playerId, Date begin, Date end)
+        throws SystemException {
+
+        List<ESPlayerShotData> shotData =
+            esPlayerShotDataPersistence.findByG_ShotDataByDate(playerId, begin);
+            
+        return shotData;
+    }
 }
