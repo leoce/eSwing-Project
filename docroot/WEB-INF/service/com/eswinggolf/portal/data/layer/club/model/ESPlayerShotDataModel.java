@@ -112,6 +112,34 @@ public interface ESPlayerShotDataModel extends BaseModel<ESPlayerShotData> {
 	public void setProductSerialNo(int productSerialNo);
 
 	/**
+	 * Gets the company id of this e s player shot data.
+	 *
+	 * @return the company id of this e s player shot data
+	 */
+	public long getCompanyId();
+
+	/**
+	 * Sets the company id of this e s player shot data.
+	 *
+	 * @param companyId the company id of this e s player shot data
+	 */
+	public void setCompanyId(long companyId);
+
+	/**
+	 * Gets the group id of this e s player shot data.
+	 *
+	 * @return the group id of this e s player shot data
+	 */
+	public long getGroupId();
+
+	/**
+	 * Sets the group id of this e s player shot data.
+	 *
+	 * @param groupId the group id of this e s player shot data
+	 */
+	public void setGroupId(long groupId);
+
+	/**
 	 * Gets the launch monitor of this e s player shot data.
 	 *
 	 * @return the launch monitor of this e s player shot data

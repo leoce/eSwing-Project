@@ -15,9 +15,16 @@
 package com.eswinggolf.portal.data.layer.club.service.impl;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import com.eswinggolf.club.profile.portlet.ActionUtil;
+import com.eswinggolf.portal.data.layer.club.model.ESClub;
 import com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData;
+import com.eswinggolf.portal.data.layer.club.model.ESTrialShotData;
+import com.eswinggolf.portal.data.layer.club.model.impl.ESPlayerShotDataImpl;
+import com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil;
+import com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.base.ESPlayerShotDataLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -52,29 +59,71 @@ public class ESPlayerShotDataLocalServiceImpl
      * @throws SystemException
      */
 
-    public ESPlayerShotData addESPlayerShotData(ESPlayerShotData shot)
+    public void addESPlayerShotData(long playerId)
         throws SystemException {
 
-        ESPlayerShotData shotData =
-            esPlayerShotDataPersistence.create(
-                counterLocalService.increment(ESPlayerShotData.class.getName()));
 
+    	List<ESTrialShotData> list = ESTrialShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
         
-        //Your properties here
+    	Iterator<ESTrialShotData> iter = list.iterator();
+    	
+    	while (iter.hasNext()){
+    		
+    		ESTrialShotData trialShot = (ESTrialShotData) iter.next();
+    		
+    		ESPlayerShotData playerShot =
+                esPlayerShotDataPersistence.create(
+                    counterLocalService.increment(ESPlayerShotData.class.getName()));
+    		
+    			playerShot.setActive(trialShot.getActive());
+    			playerShot.setAmbientTemp(trialShot.getAmbientTemp());
+    			playerShot.setBallAngleOfAttack(trialShot.getBallAngleOfAttack());
+    			playerShot.setBallCompression(trialShot.getBallCompression());
+    			playerShot.setBallSpeed(trialShot.getBallSpeed());
+    			playerShot.setBallSpinRate(trialShot.getBallSpinRate());
+    			playerShot.setBarPressureAlt(trialShot.getBarPressureAlt());
+    			playerShot.setClubLoft(trialShot.getClubLoft());
+    			playerShot.setClubSpeed(trialShot.getClubSpeed());
+    			playerShot.setCompanyId(trialShot.getCompanyId());
+    			playerShot.setCreateDate(trialShot.getCreateDate());
+    			playerShot.setFaceAngle(trialShot.getFaceAngle());
+    			playerShot.setFairwayFirmness(trialShot.getFairwayFirmness());
+    			playerShot.setGroupId(trialShot.getGroupId());
+    			playerShot.setLaunchAngle(trialShot.getLaunchAngle());
+    			playerShot.setLaunchMonitor(trialShot.getLaunchMonitor());
+    			playerShot.setModifiedDate(trialShot.getModifiedDate());
+    			playerShot.setPlayerClubId(trialShot.getPlayerClubId());
+    			playerShot.setPlayerId(trialShot.getPlayerId());
+    			playerShot.setProductSerialNo(trialShot.getProductSerialNo());
+    			playerShot.setRelativeHumid(trialShot.getRelativeHumid());
+    			playerShot.setSpinAxisAngle(trialShot.getSpinAxisAngle());
+    			playerShot.setSwingPath(trialShot.getSwingPath());
+    			playerShot.setWindDirection(trialShot.getWindDirection());
+    			playerShot.setWindSpeed(trialShot.getWindSpeed());
+    			
+    			esPlayerShotDataPersistence.update(playerShot, false);
+    			
+    		
+    	}
+ 
+    }
 
-        try {
-			resourceLocalService.addResources(
-			    shotData.getPlayerClubId(), shotData.getPlayerId(),
-			    ESPlayerShotData.class.getName(), false);
-			
-		} catch (PortalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+    public void deleteESTrialShotData(long playerId)
+    throws SystemException {
+
+
+	List<ESTrialShotData> list = ESTrialShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
+    
+	Iterator<ESTrialShotData> iter = list.iterator();
+	
+	while (iter.hasNext()){
+		
+		ESTrialShotData trialShot = (ESTrialShotData) iter.next();		
+		
+		ESTrialShotDataLocalServiceUtil.deleteESTrialShotData(trialShot);	
+		
 		}
 
-        
-
-        return esPlayerShotDataPersistence.update(shotData, false);
     }
 
     /**

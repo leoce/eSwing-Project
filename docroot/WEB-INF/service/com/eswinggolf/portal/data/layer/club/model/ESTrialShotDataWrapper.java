@@ -68,6 +68,22 @@ public class ESTrialShotDataWrapper implements ESTrialShotData {
 		_esTrialShotData.setProductSerialNo(productSerialNo);
 	}
 
+	public long getCompanyId() {
+		return _esTrialShotData.getCompanyId();
+	}
+
+	public void setCompanyId(long companyId) {
+		_esTrialShotData.setCompanyId(companyId);
+	}
+
+	public long getGroupId() {
+		return _esTrialShotData.getGroupId();
+	}
+
+	public void setGroupId(long groupId) {
+		_esTrialShotData.setGroupId(groupId);
+	}
+
 	public boolean getLaunchMonitor() {
 		return _esTrialShotData.getLaunchMonitor();
 	}

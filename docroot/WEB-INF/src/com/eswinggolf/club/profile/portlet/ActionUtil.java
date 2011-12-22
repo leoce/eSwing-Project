@@ -31,6 +31,7 @@ import com.eswinggolf.portal.data.layer.service.ESPlayerLocalServiceUtil;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -227,13 +228,16 @@ public class ActionUtil {
 
     	ThemeDisplay themeDisplay =
             (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
-
+       
        long playerId = themeDisplay.getUserId();
-
+       
         List<ESPlayerShotData> tempResults;
 
         try {
-            tempResults = ESPlayerShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
+        	
+        	addGroupAndCompanyId(request);
+        	tempResults = ESPlayerShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
+        	
         }
 
         catch (SystemException ex) {
@@ -348,7 +352,7 @@ public class ActionUtil {
         List<ESTrialShotData> tempResults;
 
         try {
-            tempResults = ESTrialShotDataLocalServiceUtil.getESTrialShotDatas(QueryUtil.ALL_POS,QueryUtil.ALL_POS);
+            tempResults = ESTrialShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
 
         }catch (SystemException ex) {
             tempResults  = Collections.emptyList();
@@ -359,6 +363,56 @@ public class ActionUtil {
 
     }
     
+    public static List<ESPlayerShotData> covertShotDataList(List<ESTrialShotData> list){
+    	
+    	List<ESPlayerShotData> newList = new ArrayList<ESPlayerShotData>(list.size());
+    	
+        Iterator iter = list.iterator();
+        
+        while (iter.hasNext()){
+        	
+        	ESTrialShotData shot = (ESTrialShotData) iter.next();
+        	
+        	ESPlayerShotData playerShot = convertShotData(shot);
+        	
+        	newList.add(playerShot);
+        }
+    	return newList;
+    	
+    }
+    public static ESPlayerShotData convertShotData(ESTrialShotData trialShot){
+    	
+    	ESPlayerShotData playerShot = new ESPlayerShotDataImpl();
+    	
+    	playerShot.setActive(trialShot.getActive());
+    	playerShot.setAmbientTemp(trialShot.getAmbientTemp());
+    	playerShot.setBallAngleOfAttack(trialShot.getBallAngleOfAttack());
+    	playerShot.setBallCompression(trialShot.getBallCompression());
+    	playerShot.setBallSpeed(trialShot.getBallSpeed());
+    	playerShot.setBallSpinRate(trialShot.getBallSpinRate());
+    	playerShot.setBarPressureAlt(trialShot.getBarPressureAlt());
+    	playerShot.setClubLoft(trialShot.getClubLoft());
+    	playerShot.setClubSpeed(trialShot.getClubSpeed());
+    	playerShot.setCompanyId(trialShot.getCompanyId());
+    	playerShot.setCreateDate(trialShot.getCreateDate());
+    	playerShot.setFaceAngle(trialShot.getFaceAngle());
+    	playerShot.setFairwayFirmness(trialShot.getFairwayFirmness());
+    	playerShot.setGroupId(trialShot.getGroupId());
+    	playerShot.setLaunchAngle(trialShot.getLaunchAngle());
+    	playerShot.setLaunchMonitor(trialShot.getLaunchMonitor());
+    	playerShot.setModifiedDate(trialShot.getModifiedDate());
+    	playerShot.setPlayerClubId(trialShot.getPlayerClubId());
+    	playerShot.setPlayerId(trialShot.getPlayerId());
+    	playerShot.setProductSerialNo(trialShot.getProductSerialNo());
+    	playerShot.setRelativeHumid(trialShot.getRelativeHumid());
+    	playerShot.setSpinAxisAngle(trialShot.getSpinAxisAngle());
+    	playerShot.setSwingPath(trialShot.getSwingPath());
+    	playerShot.setWindDirection(trialShot.getWindDirection());
+    	playerShot.setWindSpeed(trialShot.getWindSpeed());
+    	
+    	return playerShot;
+    	
+    }
     /**
      * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
      * @param request
@@ -483,34 +537,56 @@ public class ActionUtil {
 
 
     
-    public static ESPlayerShotData playerShotDataFromRequest(ActionRequest request) {
+    public static ShotData shotDataFromRequest(ActionRequest request) {
        ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
-       ESPlayerShotData playerShotData = new ESPlayerShotDataImpl();
+       ShotData shotData = new ShotData();
 
+       String ballCompression = ParamUtil.getString(request, "compression");
+       String fairwayFirmness = ParamUtil.getString(request, "fairway");
        Date now = new Date();
        
+       double compression = 0.0d;
+       double firmness = 0.0d;
        
-       playerShotData.setPlayerClubId(ParamUtil.getLong(request, "clubId"));
-       playerShotData.setPlayerId(themeDisplay.getCompanyId());
-       playerShotData.setLaunchMonitor(ParamUtil.getBoolean(request, "launchMonitor"));
-       playerShotData.setClubSpeed(ParamUtil.getInteger(request, "clubSpeed"));
-       playerShotData.setClubLoft(ParamUtil.getInteger(request, "loft"));
-       playerShotData.setFaceAngle(ParamUtil.getInteger(request,"faceAngle"));
-       playerShotData.setBallSpinRate(ParamUtil.getInteger(request,"spinRate"));
-       playerShotData.setSwingPath(ParamUtil.getInteger(request, "swingPath"));
-       playerShotData.setBallAngleOfAttack(ParamUtil.getLong(request, "ballAOA"));
-       playerShotData.setBallCompression(ParamUtil.getFloat(request, "ballCompression"));
-       playerShotData.setFairwayFirmness(ParamUtil.getFloat(request, "fairwayFirmness"));
-       playerShotData.setWindDirection(ParamUtil.getInteger(request, "windDirection"));
-       playerShotData.setWindSpeed(ParamUtil.getInteger(request, "windSpeed"));
-       playerShotData.setAmbientTemp(ParamUtil.getInteger(request, "ambientTemp"));
-       playerShotData.setRelativeHumid(ParamUtil.getInteger(request, "relativeHumid"));
-       playerShotData.setBarPressureAlt(ParamUtil.getInteger(request, "barPressureAlt"));
-       playerShotData.setCreateDate(now);
-       playerShotData.setModifiedDate(now);
+       if (ballCompression.equalsIgnoreCase("low")){
+    	   compression = 0.82d;
+       }else if(ballCompression.equalsIgnoreCase("normal")){
+    	   compression = 1.82d;
+       }else if(ballCompression.equalsIgnoreCase("high")){
+    	   compression = 2.82d; 
+       }else {
+    	   compression = 3.82d;
+       }
+       
+       if (fairwayFirmness.equalsIgnoreCase("carry only")){
+    	   firmness = 0.0d;
+       }else if (fairwayFirmness.equalsIgnoreCase("normal")){
+    	   firmness = 0.5d;
+       }else {
+    	   firmness = 0.8d;
+       }
        
        
-       return playerShotData;
+   	   shotData.setClubId(ParamUtil.getLong(request, "clubName"));
+       shotData.setLaunchMonitor(ParamUtil.getBoolean(request, "launchMonitor"));
+       shotData.setClubSpeed(ParamUtil.getDouble(request, "clubSpeed"));
+       shotData.setClubLoft(ParamUtil.getDouble(request, "loft"));
+       shotData.setClubFaceAngle(ParamUtil.getDouble(request,"faceAngle"));
+       shotData.setClubSpinRate(ParamUtil.getDouble(request,"spinRate"));
+       shotData.setClubSwingPath(ParamUtil.getDouble(request, "swingPath"));
+       shotData.setBallAOA(ParamUtil.getDouble(request, "ballAOA"));
+       shotData.setBallCompression(compression);
+       shotData.setBallSpeed(ParamUtil.getDouble(request, "initialBallVelocity"));
+       //shotData.setFairwayFirmness(firmness);
+       shotData.setWindDirection(ParamUtil.getDouble(request, "windDirection"));
+       shotData.setWindSpeed(ParamUtil.getDouble(request, "windSpeed"));
+       shotData.set_temperature(ParamUtil.getDouble(request, "ambientTemp"));
+       shotData.set_altitude(ParamUtil.getDouble(request, "barPressureAlt"));
+       //shotData.setCreateDate(now);
+       //shotData.setModifiedDate(now);
+       
+       
+       return shotData;
     }
     
     public static ShotData shotDataConverter(ESPlayerShotData playerData, Boolean member){
@@ -518,6 +594,8 @@ public class ActionUtil {
     	ShotData shot = new ShotData();
     	
     	
+    	shot.setClubLoft(playerData.getClubLoft());
+    	shot.setClubSpeed(playerData.getClubSpeed());
 		shot.setClubFaceAngle(playerData.getFaceAngle());
 		shot.setClubSwingPath(playerData.getSwingPath());
     	shot.setLaunchMonitor(playerData.getLaunchMonitor());
@@ -557,5 +635,32 @@ public class ActionUtil {
        
    
     	return registered;	
-    }	
+    }
+    
+    public static void addGroupAndCompanyId(RenderRequest request) throws SystemException{
+    	
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
+    	long playerId = themeDisplay.getUserId();
+    	
+    	 List<ESPlayerShotData> shotDataList =
+             ESPlayerShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
+            	
+         Iterator iter = shotDataList.iterator();
+         while (iter.hasNext()){
+          
+        	    ESPlayerShotData playerShot = (ESPlayerShotData) iter.next();
+        	    
+        	    if ((playerShot.getCompanyId() != 0) || (playerShot.getCompanyId() != 0)){
+        	    	playerShot.setGroupId(themeDisplay.getScopeGroupId());
+        	    	playerShot.setCompanyId(themeDisplay.getCompanyId());
+        	    	ESPlayerShotDataLocalServiceUtil.updateESPlayerShotData(playerShot);
+
+        	    }
+                
+         }
+
+    	
+    }
 }

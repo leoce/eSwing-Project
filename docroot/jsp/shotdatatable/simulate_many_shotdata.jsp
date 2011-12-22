@@ -109,12 +109,13 @@ if (shotData == null){
 	
 	<liferay-ui:search-container
       emptyResultsMessage="there-are-no-shot-data"
-      delta="5">
+      delta="5"
+      rowChecker="<%= new RowChecker(renderResponse) %>">
 
     <liferay-ui:search-container-results>
    		<%
     		List<ESPlayerShotData> tempResults = ActionUtil.getPlayerShotData(renderRequest);
-
+			
     	results = ListUtil.subList(
         	tempResults, searchContainer.getStart(), searchContainer.getEnd());
     		total = tempResults.size();
@@ -128,11 +129,7 @@ if (shotData == null){
         className="com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData"
         keyProperty="shotDataId"
         modelVar="shotdata" >
-        
-      <liferay-ui:search-container-column-text name="simulate">
-      	<aui:input type="checkbox" name="simulate" />
-      </liferay-ui:search-container-column-text>  
-       
+   
       <liferay-ui:search-container-column-text
           name="playerClubId"
           property="playerClubId" />
@@ -148,10 +145,6 @@ if (shotData == null){
       <liferay-ui:search-container-column-text
       	  name="createDate" 
       	  property="createDate"/>
-      	  
-      <liferay-ui:search-container-column-jsp
-          path="/jsp/shotdatatable/view_actions.jsp"
-          align="right" />
 	</liferay-ui:search-container-row>
     
     <liferay-ui:search-iterator />
@@ -159,7 +152,7 @@ if (shotData == null){
   </liferay-ui:search-container>
   
   	<aui:button-row>
-		<aui:button type="submit" name="Ok"/>
+		<aui:button type="submit" name="Ok" value="Ok"/>
 		<aui:button type="cancel" name="Cancel"/>
 	</aui:button-row>
 

@@ -77,6 +77,22 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 		_productSerialNo = productSerialNo;
 	}
 
+	public long getCompanyId() {
+		return _companyId;
+	}
+
+	public void setCompanyId(long companyId) {
+		_companyId = companyId;
+	}
+
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
+	}
+
 	public boolean getLaunchMonitor() {
 		return _launchMonitor;
 	}
@@ -283,6 +299,8 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 		clone.setPlayerId(getPlayerId());
 		clone.setPlayerClubId(getPlayerClubId());
 		clone.setProductSerialNo(getProductSerialNo());
+		clone.setCompanyId(getCompanyId());
+		clone.setGroupId(getGroupId());
 		clone.setLaunchMonitor(getLaunchMonitor());
 		clone.setSimulate(getSimulate());
 		clone.setActive(getActive());
@@ -365,7 +383,7 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 	}
 
 	public String toString() {
-		StringBundler sb = new StringBundler(53);
+		StringBundler sb = new StringBundler(57);
 
 		sb.append("{shotDataId=");
 		sb.append(getShotDataId());
@@ -375,6 +393,10 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 		sb.append(getPlayerClubId());
 		sb.append(", productSerialNo=");
 		sb.append(getProductSerialNo());
+		sb.append(", companyId=");
+		sb.append(getCompanyId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", launchMonitor=");
 		sb.append(getLaunchMonitor());
 		sb.append(", simulate=");
@@ -425,7 +447,7 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(82);
+		StringBundler sb = new StringBundler(88);
 
 		sb.append("<model><model-name>");
 		sb.append(
@@ -447,6 +469,14 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 		sb.append(
 			"<column><column-name>productSerialNo</column-name><column-value><![CDATA[");
 		sb.append(getProductSerialNo());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>companyId</column-name><column-value><![CDATA[");
+		sb.append(getCompanyId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>launchMonitor</column-name><column-value><![CDATA[");
@@ -546,6 +576,8 @@ public class ESPlayerShotDataClp extends BaseModelImpl<ESPlayerShotData>
 	private long _playerId;
 	private long _playerClubId;
 	private int _productSerialNo;
+	private long _companyId;
+	private long _groupId;
 	private boolean _launchMonitor;
 	private boolean _simulate;
 	private boolean _active;

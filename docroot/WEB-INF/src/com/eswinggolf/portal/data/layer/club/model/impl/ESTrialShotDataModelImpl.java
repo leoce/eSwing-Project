@@ -60,6 +60,8 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 			{ "playerId", new Integer(Types.BIGINT) },
 			{ "playerClubId", new Integer(Types.BIGINT) },
 			{ "productSerialNo", new Integer(Types.INTEGER) },
+			{ "companyId", new Integer(Types.BIGINT) },
+			{ "groupId", new Integer(Types.BIGINT) },
 			{ "launchMonitor", new Integer(Types.BOOLEAN) },
 			{ "simulate", new Integer(Types.BOOLEAN) },
 			{ "active_", new Integer(Types.BOOLEAN) },
@@ -83,7 +85,7 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 			{ "createDate", new Integer(Types.TIMESTAMP) },
 			{ "modifiedDate", new Integer(Types.TIMESTAMP) }
 		};
-	public static final String TABLE_SQL_CREATE = "create table es_ESTrialShotData (shotDataId LONG not null primary key,playerId LONG,playerClubId LONG,productSerialNo INTEGER,launchMonitor BOOLEAN,simulate BOOLEAN,active_ BOOLEAN,clubLoft INTEGER,clubSpeed INTEGER,faceAngle INTEGER,swingPath INTEGER,spinAxisAngle INTEGER,launchAngle INTEGER,ballSpeed INTEGER,ballSpinRate INTEGER,ballAngleOfAttack DOUBLE,ballCompression DOUBLE,stepTimeIncrement DOUBLE,windSpeed INTEGER,windDirection INTEGER,ambientTemp INTEGER,barPressureAlt INTEGER,relativeHumid INTEGER,fairwayFirmness DOUBLE,createDate DATE null,modifiedDate DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table es_ESTrialShotData (shotDataId LONG not null primary key,playerId LONG,playerClubId LONG,productSerialNo INTEGER,companyId LONG,groupId LONG,launchMonitor BOOLEAN,simulate BOOLEAN,active_ BOOLEAN,clubLoft INTEGER,clubSpeed INTEGER,faceAngle INTEGER,swingPath INTEGER,spinAxisAngle INTEGER,launchAngle INTEGER,ballSpeed INTEGER,ballSpinRate INTEGER,ballAngleOfAttack DOUBLE,ballCompression DOUBLE,stepTimeIncrement DOUBLE,windSpeed INTEGER,windDirection INTEGER,ambientTemp INTEGER,barPressureAlt INTEGER,relativeHumid INTEGER,fairwayFirmness DOUBLE,createDate DATE null,modifiedDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table es_ESTrialShotData";
 	public static final String ORDER_BY_JPQL = " ORDER BY esTrialShotData.playerId ASC, esTrialShotData.createDate ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY es_ESTrialShotData.playerId ASC, es_ESTrialShotData.createDate ASC";
@@ -144,6 +146,22 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 
 	public void setProductSerialNo(int productSerialNo) {
 		_productSerialNo = productSerialNo;
+	}
+
+	public long getCompanyId() {
+		return _companyId;
+	}
+
+	public void setCompanyId(long companyId) {
+		_companyId = companyId;
+	}
+
+	public long getGroupId() {
+		return _groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		_groupId = groupId;
 	}
 
 	public boolean getLaunchMonitor() {
@@ -347,7 +365,7 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 
 	public ExpandoBridge getExpandoBridge() {
 		if (_expandoBridge == null) {
-			_expandoBridge = ExpandoBridgeFactoryUtil.getExpandoBridge(0,
+			_expandoBridge = ExpandoBridgeFactoryUtil.getExpandoBridge(getCompanyId(),
 					ESTrialShotData.class.getName(), getPrimaryKey());
 		}
 
@@ -368,6 +386,10 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 		esTrialShotDataImpl.setPlayerClubId(getPlayerClubId());
 
 		esTrialShotDataImpl.setProductSerialNo(getProductSerialNo());
+
+		esTrialShotDataImpl.setCompanyId(getCompanyId());
+
+		esTrialShotDataImpl.setGroupId(getGroupId());
 
 		esTrialShotDataImpl.setLaunchMonitor(getLaunchMonitor());
 
@@ -472,7 +494,7 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 	}
 
 	public String toString() {
-		StringBundler sb = new StringBundler(53);
+		StringBundler sb = new StringBundler(57);
 
 		sb.append("{shotDataId=");
 		sb.append(getShotDataId());
@@ -482,6 +504,10 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 		sb.append(getPlayerClubId());
 		sb.append(", productSerialNo=");
 		sb.append(getProductSerialNo());
+		sb.append(", companyId=");
+		sb.append(getCompanyId());
+		sb.append(", groupId=");
+		sb.append(getGroupId());
 		sb.append(", launchMonitor=");
 		sb.append(getLaunchMonitor());
 		sb.append(", simulate=");
@@ -532,7 +558,7 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(82);
+		StringBundler sb = new StringBundler(88);
 
 		sb.append("<model><model-name>");
 		sb.append("com.eswinggolf.portal.data.layer.club.model.ESTrialShotData");
@@ -553,6 +579,14 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 		sb.append(
 			"<column><column-name>productSerialNo</column-name><column-value><![CDATA[");
 		sb.append(getProductSerialNo());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>companyId</column-name><column-value><![CDATA[");
+		sb.append(getCompanyId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>groupId</column-name><column-value><![CDATA[");
+		sb.append(getGroupId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>launchMonitor</column-name><column-value><![CDATA[");
@@ -652,6 +686,8 @@ public class ESTrialShotDataModelImpl extends BaseModelImpl<ESTrialShotData>
 	private long _playerId;
 	private long _playerClubId;
 	private int _productSerialNo;
+	private long _companyId;
+	private long _groupId;
 	private boolean _launchMonitor;
 	private boolean _simulate;
 	private boolean _active;

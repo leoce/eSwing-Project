@@ -42,6 +42,8 @@
 		<field name="playerId" type="long" />
 		<field name="playerClubId" type="long" />
 		<field name="productSerialNo" type="int" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="launchMonitor" type="boolean" />
 		<field name="simulate" type="boolean" />
 		<field name="active" type="boolean" />
@@ -62,7 +64,11 @@
 		<field name="barPressureAlt" type="int" />
 		<field name="relativeHumid" type="int" />
 		<field name="fairwayFirmness" type="double" />
-		<field name="createDate" type="Date" />
+		<field name="createDate" type="Date" >
+			<hint name="year-range-delta">2</hint>
+			<hint name="year-range-future">false</hint>
+			<hint name="show-time">false</hint>
+		</field>
 		<field name="modifiedDate" type="Date" />
 	</model>
 	<model name="com.eswinggolf.portal.data.layer.club.model.ESShotDataSharing">
@@ -81,6 +87,8 @@
 		<field name="playerId" type="long" />
 		<field name="playerClubId" type="long" />
 		<field name="productSerialNo" type="int" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
 		<field name="launchMonitor" type="boolean" />
 		<field name="simulate" type="boolean" />
 		<field name="active" type="boolean" />

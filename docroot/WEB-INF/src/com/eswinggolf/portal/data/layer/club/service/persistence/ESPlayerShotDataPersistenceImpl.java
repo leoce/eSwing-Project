@@ -324,6 +324,8 @@ public class ESPlayerShotDataPersistenceImpl extends BasePersistenceImpl<ESPlaye
 		esPlayerShotDataImpl.setPlayerId(esPlayerShotData.getPlayerId());
 		esPlayerShotDataImpl.setPlayerClubId(esPlayerShotData.getPlayerClubId());
 		esPlayerShotDataImpl.setProductSerialNo(esPlayerShotData.getProductSerialNo());
+		esPlayerShotDataImpl.setCompanyId(esPlayerShotData.getCompanyId());
+		esPlayerShotDataImpl.setGroupId(esPlayerShotData.getGroupId());
 		esPlayerShotDataImpl.setLaunchMonitor(esPlayerShotData.isLaunchMonitor());
 		esPlayerShotDataImpl.setSimulate(esPlayerShotData.isSimulate());
 		esPlayerShotDataImpl.setActive(esPlayerShotData.isActive());

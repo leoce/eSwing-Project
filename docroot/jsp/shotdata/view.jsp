@@ -3,15 +3,28 @@
 <%
 
 	ShotData shot = (ShotData) request.getAttribute("shotData");
-	//boolean isRegistered = ActionUtil.isRegisteredMember(renderRequest);
-	boolean isRegistered = true;
+	boolean isRegistered = false;//true;
+	double firmness = 0.0d;
+	
+
 	String redirect = PortalUtil.getCurrentURL(renderRequest);
 	boolean hasShotData = false;
 	
-	if (shot != null)
+	if (shot != null){
 		hasShotData = true;
-	
+		
+		firmness = ParamUtil.getDouble(request,"firmness");
+		isRegistered  = ParamUtil.getBoolean(request,"registered");
+	}
 
+	boolean normal = true;
+	boolean low = false;
+	boolean high = false;
+	boolean limitedFlight = false;
+	
+	boolean carryOnly = true;
+	boolean normalFirmness = false;
+	boolean hardFirmness = false;
 
 %>
 
@@ -21,11 +34,22 @@
 
 <portlet:renderURL var="uploadShotDataURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString()%>" >
 	<portlet:param name="jspPage" value="/jsp/shotdatatable/simulate_one_shotdata.jsp" />
+	<portlet:param name="redirect" value="<%= redirect %>" />
 </portlet:renderURL>
 
  <aui:form name="fm" action="<%= simulateShotDataURL.toString() %>" method="post">
-	<aui:fieldset>	
-	
+	<aui:fieldset>
+	<%
+		if (hasShotData){
+	%>	
+	 <aui:input inlineLabel="right" 
+    	name="launchMonitor" 
+    	type="checkbox" 
+    	disabled="true" 
+    	checked="<%= shot.isLaunchMonitor() %>" 
+    	label="Launch Monitor Attached" 
+    	visible="<%= shot.isLaunchMonitor() %>"/>
+    <%} %>	
 	<liferay-ui:panel-container>
 	<liferay-ui:panel title="Clubs" collapsible="true" extended="true">			
 		<aui:layout>
@@ -129,17 +153,30 @@
 	</liferay-ui:panel>
 	
 	<liferay-ui:panel title="Ball Parameters" collapsible="true" extended="true">
+		
+		<%
+			if (hasShotData){
+				double ballCompression = shot.getBallCompression();
+				
+				if (ballCompression == 1.0){
+					normal = true;
+					low = false;
+					high = false;
+					limitedFlight = false;
+				}
+			}
+		%>
 		<aui:select name="compression" width="40">
-      		<aui:option value="low">
+      		<aui:option value="low" selected="<%= low %>">
         		<liferay-ui:message key="low" />
       		</aui:option>
-      		<aui:option value="normal" selected="<%= true %>">
+      		<aui:option value="normal" selected="<%= normal %>">
         		<liferay-ui:message key="normal" />
       		</aui:option>
-      		<aui:option value="high">
+      		<aui:option value="high" selected="<%= high %>">
         		<liferay-ui:message key="high" />
       		</aui:option>
-      		<aui:option value="limitedFlight">
+      		<aui:option value="limitedFlight" selected="<%= limitedFlight %>">
         		<liferay-ui:message key="limited-flight" />
       		</aui:option>
       	</aui:select>
@@ -228,10 +265,20 @@
 	
 		<aui:layout>
 		
+			<%
+				if (hasShotData){
+					if (firmness == 1.0){
+						carryOnly = false;
+						normalFirmness = true;
+						hardFirmness = false;
+					}
+					
+				}
+			%>
 			<aui:field-wrapper name="fairway">
-				<aui:input checked="<%= true %>" inlineLabel="right" name="fairway" type="radio" value="1" label="Carry Only - (No Roll)" />
-				<aui:input inlineLabel="right" name="fairway" type="radio" value="2" label="Normal - (Carry Only + 10%)"  />
-				<aui:input inlineLabel="right" name="fairway" type="radio" value="3" label="Hard - (Carry Only + 15%)" />
+				<aui:input checked="<%= carryOnly %>" inlineLabel="right" name="fairway" type="radio" value="carry only" label="Carry Only - (No Roll)" />
+				<aui:input checked="<%= normalFirmness %>" inlineLabel="right" name="fairway" type="radio" value="Normal" label="Normal - (Carry Only + 10%)"  />
+				<aui:input checked="<%= hardFirmness %>" inlineLabel="right" name="fairway" type="radio" value="Hard" label="Hard - (Carry Only + 15%)" />
 			</aui:field-wrapper>
 				
 		</aui:layout>
@@ -240,7 +287,9 @@
 		<aui:button-row>
 			<aui:button type="button" name="upload" value="Upload Shot" onClick="javascript: openPopup('Display Shot Data');"/>
 			<aui:button type="submit" name="simulate" value="Simulate" />
-			<aui:button type="button" name="save" value="Save & Register" onClick="<%= addSubscriptionURL.toString() %>" disabled="<%= !hasShotData %>" visible="<%= isRegistered %>"/>
+			<% if (!isRegistered) { %>
+			<aui:button type="button" name="save" value="Save & Register" onClick="<%= addSubscriptionURL.toString() %>" disabled="<%= !hasShotData %>" />
+			<%} %>
 		</aui:button-row>
 		
 	</aui:fieldset>

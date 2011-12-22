@@ -35,7 +35,7 @@ public class ESPlayerClubPortlet extends MVCPortlet {
 	
 	
 	private static Log _log = LogFactory.getLog(ESPlayerClubPortlet.class);
-    protected String editPlayerClubJSP = "/jsp/playerclub/edit_playerclub.jsp";
+    protected String editPlayerClubJSP = "/jsp/playerclub/view.jsp";
 
 	 /**
 	   * This Action adds a Player's Club to the database.
@@ -104,6 +104,7 @@ public class ESPlayerClubPortlet extends MVCPortlet {
 	                ESPlayerClubLocalServiceUtil.getESPlayerClub(playerClubKey);
 	            request.setAttribute("club", club);
 	            response.setRenderParameter("jspPage", editPlayerClubJSP);
+	            
 	        }
 	    }
 

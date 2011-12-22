@@ -57,6 +57,8 @@
 		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="playerClubId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="productSerialNo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="launchMonitor" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="simulate" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="active" column="active_" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
@@ -102,6 +104,8 @@
 		<property name="playerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="playerClubId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="productSerialNo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="launchMonitor" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="simulate" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 		<property name="active" column="active_" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />

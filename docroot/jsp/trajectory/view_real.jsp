@@ -5,38 +5,10 @@
 String redirect = PortalUtil.getCurrentURL(renderRequest);
 List<Point3D> points = (List<Point3D>) request.getAttribute("points");
 
-List<List<Point3D>> arrayPoints = (List<List<Point3D>>) request.getAttribute("arrayPoints");
-
-if (arrayPoints != null){
-	
-	Iterator iter = arrayPoints.iterator();
-	
-	while (iter.hasNext()){
-		
-		List<Point3D> list = (List<Point3D>) iter.next();
-		
-		Iterator iter2 = list.iterator();
-		
-		while (iter2.hasNext()){
-			
-			Point3D point = (Point3D) iter2.next();
-			
-			System.out.println(point.toString());
-		}
-	}
-}
-if (points != null){
-	Iterator iter = points.iterator();
-
-	while (iter.hasNext()){
-	
-		Point3D point = (Point3D) iter.next();
-	
-		System.out.println(point.toString());
-	}
-}
 %>
-
+<p>
+<img id="images" src="<%= renderResponse.encodeURL(renderRequest.getContextPath()) + "/images/ShotGraph1.bmp" %>" style="width: 850px; height: 675px;" border="0" />
+</p>
 
 <portlet:renderURL var="uploadShotDataURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString()%>" >
 	<portlet:param name="jspPage" value="/jsp/shotdatatable/simulate_many_shotdata.jsp" />

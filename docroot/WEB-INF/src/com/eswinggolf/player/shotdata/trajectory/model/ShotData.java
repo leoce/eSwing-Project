@@ -484,5 +484,7 @@ public class ShotData {
 	System.out.println("Ball Mom of Intertia --> "+shotData.BALL_MOMENT_OF_INERTIA);
 	System.out.println("Aero Constant --> "+shotData.getKa());
 	}
+	
+	
 
 }

@@ -59,8 +59,6 @@ public class ESClubLocalServiceImpl extends ESClubLocalServiceBaseImpl {
             esClubPersistence.create(
                 counterLocalService.increment(ESClub.class.getName()));
         
-        	System.out.println("ESClubLocalServiceImpl|addClub");
-        	System.out.println("id is created");
         
         	club.setCompanyId(newClub.getCompanyId());
         	club.setGroupId(newClub.getGroupId());
@@ -77,8 +75,6 @@ public class ESClubLocalServiceImpl extends ESClubLocalServiceBaseImpl {
         	club.setActive(newClub.getActive());
         	club.setCreateDate(newClub.getCreateDate());
         	club.setModifiedDate(newClub.getModifiedDate());
-        	
-        	System.out.println("All fields set...");
         	
         	//resourceLocalService.addResources(
             //        newClub.getCompanyId(), newClub.getGroupId(),

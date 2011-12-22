@@ -225,6 +225,23 @@ public class ESPlayerShotDataLocalServiceWrapper
 	}
 
 	/**
+	* Adds a newly created registration to the database.
+	*
+	* @param shot
+	* @return
+	* @throws SystemException
+	*/
+	public void addESPlayerShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_esPlayerShotDataLocalService.addESPlayerShotData(playerId);
+	}
+
+	public void deleteESTrialShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_esPlayerShotDataLocalService.deleteESTrialShotData(playerId);
+	}
+
+	/**
 	* Gets all Player shot data out of the database.
 	*
 	* @return
@@ -256,10 +273,23 @@ public class ESPlayerShotDataLocalServiceWrapper
 	* @throws SystemException
 	*/
 	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getClubShotDataByDate(
-		long playerId, java.util.Date myDate)
+		long playerId, java.util.Date created)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _esPlayerShotDataLocalService.getClubShotDataByDate(playerId,
-			myDate);
+			created);
+	}
+
+	/**
+	* Gets all Player shot data by date out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getClubShotDataByScopeDate(
+		long playerId, java.util.Date begin, java.util.Date end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _esPlayerShotDataLocalService.getClubShotDataByScopeDate(playerId,
+			begin, end);
 	}
 
 	public ESPlayerShotDataLocalService getWrappedESPlayerShotDataLocalService() {

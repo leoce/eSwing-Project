@@ -2,9 +2,9 @@
 
 <%
 
-
 ESPlayerShotData shotData = (ESPlayerShotData) request.getAttribute("shotData");
 ESClub club = (ESClub) request.getAttribute("club");
+
 
 if (shotData == null){
 	
@@ -113,7 +113,8 @@ if (shotData == null){
 	
 <liferay-ui:search-container
       emptyResultsMessage="there-are-no-shot-data"
-      delta="5">
+      delta="5"
+      rowChecker="<%= new RowChecker(renderResponse) %>">
 
     <liferay-ui:search-container-results>
    		<%
@@ -144,8 +145,7 @@ if (shotData == null){
           property="clubLoft" />
       <liferay-ui:search-container-column-text
       	  name="createDate" 
-      	  property="createDate"/>
-      	  
+      	  property="createDate"/>      	  
       <liferay-ui:search-container-column-text name="Active" >
       		<aui:input type="checkbox" name="active" value="<%= shotdata.isActive() %>" />
       </liferay-ui:search-container-column-text>

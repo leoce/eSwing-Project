@@ -391,12 +391,58 @@ public class ESPlayerShotDataLocalServiceClp
 		return (com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public void addESPlayerShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_addESPlayerShotDataMethodKey13,
+				playerId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public void deleteESTrialShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_deleteESTrialShotDataMethodKey14,
+				playerId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getAllPlayerShotData(
 		long playerId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_getAllPlayerShotDataMethodKey13,
+		MethodHandler methodHandler = new MethodHandler(_getAllPlayerShotDataMethodKey15,
 				playerId);
 
 		try {
@@ -424,7 +470,7 @@ public class ESPlayerShotDataLocalServiceClp
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_getAllClubShotByPlayerMethodKey14,
+		MethodHandler methodHandler = new MethodHandler(_getAllClubShotByPlayerMethodKey16,
 				playerId, clubId);
 
 		try {
@@ -448,12 +494,40 @@ public class ESPlayerShotDataLocalServiceClp
 	}
 
 	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getClubShotDataByDate(
-		long playerId, java.util.Date myDate)
+		long playerId, java.util.Date created)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_getClubShotDataByDateMethodKey15,
-				playerId, myDate);
+		MethodHandler methodHandler = new MethodHandler(_getClubShotDataByDateMethodKey17,
+				playerId, created);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getClubShotDataByScopeDate(
+		long playerId, java.util.Date begin, java.util.Date end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getClubShotDataByScopeDateMethodKey18,
+				playerId, begin, end);
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -516,10 +590,17 @@ public class ESPlayerShotDataLocalServiceClp
 			"updateESPlayerShotData",
 			com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData.class,
 			boolean.class);
-	private MethodKey _getAllPlayerShotDataMethodKey13 = new MethodKey(_classLoaderProxy.getClassName(),
+	private MethodKey _addESPlayerShotDataMethodKey13 = new MethodKey(_classLoaderProxy.getClassName(),
+			"addESPlayerShotData", long.class);
+	private MethodKey _deleteESTrialShotDataMethodKey14 = new MethodKey(_classLoaderProxy.getClassName(),
+			"deleteESTrialShotData", long.class);
+	private MethodKey _getAllPlayerShotDataMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getAllPlayerShotData", long.class);
-	private MethodKey _getAllClubShotByPlayerMethodKey14 = new MethodKey(_classLoaderProxy.getClassName(),
+	private MethodKey _getAllClubShotByPlayerMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getAllClubShotByPlayer", long.class, long.class);
-	private MethodKey _getClubShotDataByDateMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
+	private MethodKey _getClubShotDataByDateMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getClubShotDataByDate", long.class, java.util.Date.class);
+	private MethodKey _getClubShotDataByScopeDateMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+			"getClubShotDataByScopeDate", long.class, java.util.Date.class,
+			java.util.Date.class);
 }

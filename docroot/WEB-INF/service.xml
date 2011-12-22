@@ -108,6 +108,8 @@
         <column name="playerId" type="long" primary="false"/>
         <column name="playerClubId" type="long" primary="false"/>
         <column name="productSerialNo" type="int" primary="false" />
+        <column name="companyId" type="long" />
+        <column name="groupId" type="long" />
         <!-- Audit fields -->
         
         <column name="launchMonitor" type="boolean" />
@@ -213,6 +215,8 @@
         <column name="playerId" type="long" primary="false"/>
         <column name="playerClubId" type="long" primary="false"/>
         <column name="productSerialNo" type="int" primary="false" />
+        <column name="companyId" type="long" />
+        <column name="groupId" type="long" />
         <!-- Audit fields -->
         
         <column name="launchMonitor" type="boolean" />

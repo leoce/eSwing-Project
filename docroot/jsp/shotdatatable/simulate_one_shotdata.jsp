@@ -111,9 +111,15 @@ if (shotData == null){
 
     <liferay-ui:search-container-results>
    		<%
-   		    
-    		List<ESPlayerShotData> tempResults = ActionUtil.getPlayerShotData(renderRequest);
-
+   		    boolean isRegistered = false;//ActionUtil.isRegisteredMember(renderRequest);
+   			
+   			List<ESPlayerShotData> tempResults;
+   			if (isRegistered){
+    			tempResults = ActionUtil.getPlayerShotData(renderRequest);
+   			}else {
+   				tempResults = ActionUtil.covertShotDataList(ActionUtil.getTrialShotData(renderRequest));
+   			}
+   			
     	results = ListUtil.subList(
         	tempResults, searchContainer.getStart(), searchContainer.getEnd());
     		total = tempResults.size();
@@ -127,9 +133,6 @@ if (shotData == null){
         className="com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData"
         keyProperty="shotDataId"
         modelVar="shotdata" >
-      <liferay-ui:search-container-column-text name="simulate">
-      	<aui:input name="simulate" type="radio" />
-     </liferay-ui:search-container-column-text>
       <liferay-ui:search-container-column-text
           name="club"
           value="<%= ActionUtil.getClub(shotdata.getPlayerClubId()).getClubName() %>" />
@@ -152,43 +155,6 @@ if (shotData == null){
 
   </liferay-ui:search-container>
   
-  		<aui:button-row>
-  			<aui:button type="submit" value="Ok" />
-  			<aui:button type="cancel" value="Cancel" onClick=""/>
-  		</aui:button-row>
-  
 </aui:form>
-<aui:script>
-AUI().use('node', function(A) {
-    var filterByDate = A.all('#filterByDate');
-    var clubName = A.all('#clubName');
-    var viewByDate = A.all('#viewByDate');
-    
-    if (filterByDate){
-    	alert('filter : '+filterByDate.getAttribute('value'));
-    }
-    
-    if (clubName){
-    	alert('club name : '+clubName.text());
-    }
-    
-    if (viewByDate){
-    	alert('view date: '+viewByDate.text());
-    }
-    
-	var onClick = function(e) {
-	
-		var filterByDate = (filter.getAttribute('value') == "date") ? "true" : "false";
-		 alert('Filter : '+filter.getAttribute('value'));
-		 if (filterByDate == "true"){
-        	alert(filter.getAttribute('value'));
-         }else {
-         	alert(filter.getAttribute('value'));
-         }
-    	};
 
-     filter.on('click', onClick);
-});
-
-</aui:script>
   

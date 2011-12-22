@@ -310,6 +310,8 @@ public class ESTrialShotDataPersistenceImpl extends BasePersistenceImpl<ESTrialS
 		esTrialShotDataImpl.setPlayerId(esTrialShotData.getPlayerId());
 		esTrialShotDataImpl.setPlayerClubId(esTrialShotData.getPlayerClubId());
 		esTrialShotDataImpl.setProductSerialNo(esTrialShotData.getProductSerialNo());
+		esTrialShotDataImpl.setCompanyId(esTrialShotData.getCompanyId());
+		esTrialShotDataImpl.setGroupId(esTrialShotData.getGroupId());
 		esTrialShotDataImpl.setLaunchMonitor(esTrialShotData.isLaunchMonitor());
 		esTrialShotDataImpl.setSimulate(esTrialShotData.isSimulate());
 		esTrialShotDataImpl.setActive(esTrialShotData.isActive());

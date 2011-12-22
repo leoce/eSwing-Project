@@ -11,6 +11,7 @@
 
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Collections" %>
 <%@ page import="com.liferay.portal.kernel.util.HtmlUtil" %>
@@ -18,6 +19,7 @@
 <%@ page import="com.liferay.portal.kernel.util.CalendarFactoryUtil" %>
 <%@ page import="com.liferay.portal.kernel.dao.search.ResultRow" %>
 <%@ page import="com.liferay.portal.kernel.dao.search.SearchEntry" %>
+<%@ page import="com.liferay.portal.kernel.dao.search.RowChecker" %>
 <%@ page import="com.liferay.portal.kernel.exception.SystemException" %>
 <%@ page import="com.liferay.portal.kernel.util.WebKeys" %>
 <%@ page import="com.liferay.portal.security.permission.ActionKeys" %>

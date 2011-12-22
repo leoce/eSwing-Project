@@ -47,4 +47,46 @@
       </guest-unsupported>
     </permissions>
   </model-resource>
+  
+  <portlet-resource>
+    <portlet-name>ESPlayerShotData</portlet-name>
+    <permissions>
+      <supports>
+        <action-key>VIEW</action-key>
+      </supports>
+      <community-defaults>
+        <action-key>ACTIVATE</action-key>
+      </community-defaults>
+      <guest-defaults>
+        <action-key>DEACTIVATE</action-key>
+      </guest-defaults>
+
+
+    </permissions>
+  </portlet-resource>
+
+  <model-resource>
+    <model-name>
+      com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData
+    </model-name>
+    <portlet-ref>
+      <portlet-name>ESPlayerShotData</portlet-name>
+    </portlet-ref>
+    <permissions>
+      <supports>
+        <action-key>PERMISSIONS</action-key>
+        <action-key>UPDATE</action-key>
+        <action-key>VIEW</action-key>
+      </supports>
+      <community-defaults>
+        <action-key>VIEW</action-key>
+      </community-defaults>
+      <guest-defaults>
+        <action-key>VIEW</action-key>
+      </guest-defaults>
+      <guest-unsupported>
+        <action-key>UPDATE</action-key>
+      </guest-unsupported>
+    </permissions>
+  </model-resource>
 </resource-action-mapping>

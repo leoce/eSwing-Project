@@ -31,7 +31,7 @@
 		<icon>/icon.png</icon>
 		<instanceable>true</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>/js/shotdata.js</footer-portlet-javascript>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>ClubProfile-portlet</css-class-wrapper>
 		<add-default-resource>true</add-default-resource>
 	</portlet>
@@ -40,7 +40,7 @@
 		<icon>/icon.png</icon>
 		<instanceable>true</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>/js/shotdata.js</footer-portlet-javascript>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>ClubProfile-portlet</css-class-wrapper>
 	</portlet>
 	<portlet>
@@ -48,7 +48,7 @@
 		<icon>/icon.png</icon>
 		<instanceable>true</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>/js/shotdata.js</footer-portlet-javascript>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>ClubProfile-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>

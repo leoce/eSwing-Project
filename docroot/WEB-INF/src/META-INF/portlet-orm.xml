@@ -69,6 +69,8 @@
 			<basic name="playerId" />
 			<basic name="playerClubId" />
 			<basic name="productSerialNo" />
+			<basic name="companyId" />
+			<basic name="groupId" />
 			<basic name="launchMonitor" />
 			<basic name="simulate" />
 			<basic name="active">
@@ -127,6 +129,8 @@
 			<basic name="playerId" />
 			<basic name="playerClubId" />
 			<basic name="productSerialNo" />
+			<basic name="companyId" />
+			<basic name="groupId" />
 			<basic name="launchMonitor" />
 			<basic name="simulate" />
 			<basic name="active">

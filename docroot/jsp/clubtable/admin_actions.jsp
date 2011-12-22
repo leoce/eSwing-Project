@@ -12,7 +12,7 @@ String primKey = String.valueOf(myPlayerClub.getPrimaryKey());
 <liferay-ui:icon-menu>
 
   <c:if test="<%= permissionChecker.hasPermission(groupId, name, primKey, ActionKeys.UPDATE) %>">
-    <portlet:actionURL name="editPlayerClub" var="editURL">
+    <portlet:actionURL name="editPlayerClub" var="editURL" windowState="normal">
       <portlet:param name="resourcePrimKey" value="<%= primKey %>" />
     </portlet:actionURL>
 

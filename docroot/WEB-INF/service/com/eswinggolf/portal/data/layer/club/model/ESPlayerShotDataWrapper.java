@@ -68,6 +68,22 @@ public class ESPlayerShotDataWrapper implements ESPlayerShotData {
 		_esPlayerShotData.setProductSerialNo(productSerialNo);
 	}
 
+	public long getCompanyId() {
+		return _esPlayerShotData.getCompanyId();
+	}
+
+	public void setCompanyId(long companyId) {
+		_esPlayerShotData.setCompanyId(companyId);
+	}
+
+	public long getGroupId() {
+		return _esPlayerShotData.getGroupId();
+	}
+
+	public void setGroupId(long groupId) {
+		_esPlayerShotData.setGroupId(groupId);
+	}
+
 	public boolean getLaunchMonitor() {
 		return _esPlayerShotData.getLaunchMonitor();
 	}

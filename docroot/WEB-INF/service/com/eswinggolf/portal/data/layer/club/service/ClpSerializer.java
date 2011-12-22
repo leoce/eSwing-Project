@@ -364,159 +364,173 @@ public class ClpSerializer {
 
 					method3.invoke(newModel, value3);
 
-					Method method4 = newModelClass.getMethod("setLaunchMonitor",
-							new Class[] { Boolean.TYPE });
+					Method method4 = newModelClass.getMethod("setCompanyId",
+							new Class[] { Long.TYPE });
 
-					Boolean value4 = new Boolean(oldCplModel.getLaunchMonitor());
+					Long value4 = new Long(oldCplModel.getCompanyId());
 
 					method4.invoke(newModel, value4);
 
-					Method method5 = newModelClass.getMethod("setSimulate",
-							new Class[] { Boolean.TYPE });
+					Method method5 = newModelClass.getMethod("setGroupId",
+							new Class[] { Long.TYPE });
 
-					Boolean value5 = new Boolean(oldCplModel.getSimulate());
+					Long value5 = new Long(oldCplModel.getGroupId());
 
 					method5.invoke(newModel, value5);
 
-					Method method6 = newModelClass.getMethod("setActive",
+					Method method6 = newModelClass.getMethod("setLaunchMonitor",
 							new Class[] { Boolean.TYPE });
 
-					Boolean value6 = new Boolean(oldCplModel.getActive());
+					Boolean value6 = new Boolean(oldCplModel.getLaunchMonitor());
 
 					method6.invoke(newModel, value6);
 
-					Method method7 = newModelClass.getMethod("setClubLoft",
-							new Class[] { Integer.TYPE });
+					Method method7 = newModelClass.getMethod("setSimulate",
+							new Class[] { Boolean.TYPE });
 
-					Integer value7 = new Integer(oldCplModel.getClubLoft());
+					Boolean value7 = new Boolean(oldCplModel.getSimulate());
 
 					method7.invoke(newModel, value7);
 
-					Method method8 = newModelClass.getMethod("setClubSpeed",
-							new Class[] { Integer.TYPE });
+					Method method8 = newModelClass.getMethod("setActive",
+							new Class[] { Boolean.TYPE });
 
-					Integer value8 = new Integer(oldCplModel.getClubSpeed());
+					Boolean value8 = new Boolean(oldCplModel.getActive());
 
 					method8.invoke(newModel, value8);
 
-					Method method9 = newModelClass.getMethod("setFaceAngle",
+					Method method9 = newModelClass.getMethod("setClubLoft",
 							new Class[] { Integer.TYPE });
 
-					Integer value9 = new Integer(oldCplModel.getFaceAngle());
+					Integer value9 = new Integer(oldCplModel.getClubLoft());
 
 					method9.invoke(newModel, value9);
 
-					Method method10 = newModelClass.getMethod("setSwingPath",
+					Method method10 = newModelClass.getMethod("setClubSpeed",
 							new Class[] { Integer.TYPE });
 
-					Integer value10 = new Integer(oldCplModel.getSwingPath());
+					Integer value10 = new Integer(oldCplModel.getClubSpeed());
 
 					method10.invoke(newModel, value10);
 
-					Method method11 = newModelClass.getMethod("setSpinAxisAngle",
+					Method method11 = newModelClass.getMethod("setFaceAngle",
 							new Class[] { Integer.TYPE });
 
-					Integer value11 = new Integer(oldCplModel.getSpinAxisAngle());
+					Integer value11 = new Integer(oldCplModel.getFaceAngle());
 
 					method11.invoke(newModel, value11);
 
-					Method method12 = newModelClass.getMethod("setLaunchAngle",
+					Method method12 = newModelClass.getMethod("setSwingPath",
 							new Class[] { Integer.TYPE });
 
-					Integer value12 = new Integer(oldCplModel.getLaunchAngle());
+					Integer value12 = new Integer(oldCplModel.getSwingPath());
 
 					method12.invoke(newModel, value12);
 
-					Method method13 = newModelClass.getMethod("setBallSpeed",
+					Method method13 = newModelClass.getMethod("setSpinAxisAngle",
 							new Class[] { Integer.TYPE });
 
-					Integer value13 = new Integer(oldCplModel.getBallSpeed());
+					Integer value13 = new Integer(oldCplModel.getSpinAxisAngle());
 
 					method13.invoke(newModel, value13);
 
-					Method method14 = newModelClass.getMethod("setBallSpinRate",
+					Method method14 = newModelClass.getMethod("setLaunchAngle",
 							new Class[] { Integer.TYPE });
 
-					Integer value14 = new Integer(oldCplModel.getBallSpinRate());
+					Integer value14 = new Integer(oldCplModel.getLaunchAngle());
 
 					method14.invoke(newModel, value14);
 
-					Method method15 = newModelClass.getMethod("setBallAngleOfAttack",
-							new Class[] { Double.TYPE });
+					Method method15 = newModelClass.getMethod("setBallSpeed",
+							new Class[] { Integer.TYPE });
 
-					Double value15 = new Double(oldCplModel.getBallAngleOfAttack());
+					Integer value15 = new Integer(oldCplModel.getBallSpeed());
 
 					method15.invoke(newModel, value15);
 
-					Method method16 = newModelClass.getMethod("setBallCompression",
-							new Class[] { Double.TYPE });
+					Method method16 = newModelClass.getMethod("setBallSpinRate",
+							new Class[] { Integer.TYPE });
 
-					Double value16 = new Double(oldCplModel.getBallCompression());
+					Integer value16 = new Integer(oldCplModel.getBallSpinRate());
 
 					method16.invoke(newModel, value16);
 
-					Method method17 = newModelClass.getMethod("setStepTimeIncrement",
+					Method method17 = newModelClass.getMethod("setBallAngleOfAttack",
 							new Class[] { Double.TYPE });
 
-					Double value17 = new Double(oldCplModel.getStepTimeIncrement());
+					Double value17 = new Double(oldCplModel.getBallAngleOfAttack());
 
 					method17.invoke(newModel, value17);
 
-					Method method18 = newModelClass.getMethod("setWindSpeed",
-							new Class[] { Integer.TYPE });
+					Method method18 = newModelClass.getMethod("setBallCompression",
+							new Class[] { Double.TYPE });
 
-					Integer value18 = new Integer(oldCplModel.getWindSpeed());
+					Double value18 = new Double(oldCplModel.getBallCompression());
 
 					method18.invoke(newModel, value18);
 
-					Method method19 = newModelClass.getMethod("setWindDirection",
-							new Class[] { Integer.TYPE });
+					Method method19 = newModelClass.getMethod("setStepTimeIncrement",
+							new Class[] { Double.TYPE });
 
-					Integer value19 = new Integer(oldCplModel.getWindDirection());
+					Double value19 = new Double(oldCplModel.getStepTimeIncrement());
 
 					method19.invoke(newModel, value19);
 
-					Method method20 = newModelClass.getMethod("setAmbientTemp",
+					Method method20 = newModelClass.getMethod("setWindSpeed",
 							new Class[] { Integer.TYPE });
 
-					Integer value20 = new Integer(oldCplModel.getAmbientTemp());
+					Integer value20 = new Integer(oldCplModel.getWindSpeed());
 
 					method20.invoke(newModel, value20);
 
-					Method method21 = newModelClass.getMethod("setBarPressureAlt",
+					Method method21 = newModelClass.getMethod("setWindDirection",
 							new Class[] { Integer.TYPE });
 
-					Integer value21 = new Integer(oldCplModel.getBarPressureAlt());
+					Integer value21 = new Integer(oldCplModel.getWindDirection());
 
 					method21.invoke(newModel, value21);
 
-					Method method22 = newModelClass.getMethod("setRelativeHumid",
+					Method method22 = newModelClass.getMethod("setAmbientTemp",
 							new Class[] { Integer.TYPE });
 
-					Integer value22 = new Integer(oldCplModel.getRelativeHumid());
+					Integer value22 = new Integer(oldCplModel.getAmbientTemp());
 
 					method22.invoke(newModel, value22);
 
-					Method method23 = newModelClass.getMethod("setFairwayFirmness",
-							new Class[] { Double.TYPE });
+					Method method23 = newModelClass.getMethod("setBarPressureAlt",
+							new Class[] { Integer.TYPE });
 
-					Double value23 = new Double(oldCplModel.getFairwayFirmness());
+					Integer value23 = new Integer(oldCplModel.getBarPressureAlt());
 
 					method23.invoke(newModel, value23);
 
-					Method method24 = newModelClass.getMethod("setCreateDate",
-							new Class[] { Date.class });
+					Method method24 = newModelClass.getMethod("setRelativeHumid",
+							new Class[] { Integer.TYPE });
 
-					Date value24 = oldCplModel.getCreateDate();
+					Integer value24 = new Integer(oldCplModel.getRelativeHumid());
 
 					method24.invoke(newModel, value24);
 
-					Method method25 = newModelClass.getMethod("setModifiedDate",
-							new Class[] { Date.class });
+					Method method25 = newModelClass.getMethod("setFairwayFirmness",
+							new Class[] { Double.TYPE });
 
-					Date value25 = oldCplModel.getModifiedDate();
+					Double value25 = new Double(oldCplModel.getFairwayFirmness());
 
 					method25.invoke(newModel, value25);
+
+					Method method26 = newModelClass.getMethod("setCreateDate",
+							new Class[] { Date.class });
+
+					Date value26 = oldCplModel.getCreateDate();
+
+					method26.invoke(newModel, value26);
+
+					Method method27 = newModelClass.getMethod("setModifiedDate",
+							new Class[] { Date.class });
+
+					Date value27 = oldCplModel.getModifiedDate();
+
+					method27.invoke(newModel, value27);
 
 					return newModel;
 				}
@@ -661,159 +675,173 @@ public class ClpSerializer {
 
 					method3.invoke(newModel, value3);
 
-					Method method4 = newModelClass.getMethod("setLaunchMonitor",
-							new Class[] { Boolean.TYPE });
+					Method method4 = newModelClass.getMethod("setCompanyId",
+							new Class[] { Long.TYPE });
 
-					Boolean value4 = new Boolean(oldCplModel.getLaunchMonitor());
+					Long value4 = new Long(oldCplModel.getCompanyId());
 
 					method4.invoke(newModel, value4);
 
-					Method method5 = newModelClass.getMethod("setSimulate",
-							new Class[] { Boolean.TYPE });
+					Method method5 = newModelClass.getMethod("setGroupId",
+							new Class[] { Long.TYPE });
 
-					Boolean value5 = new Boolean(oldCplModel.getSimulate());
+					Long value5 = new Long(oldCplModel.getGroupId());
 
 					method5.invoke(newModel, value5);
 
-					Method method6 = newModelClass.getMethod("setActive",
+					Method method6 = newModelClass.getMethod("setLaunchMonitor",
 							new Class[] { Boolean.TYPE });
 
-					Boolean value6 = new Boolean(oldCplModel.getActive());
+					Boolean value6 = new Boolean(oldCplModel.getLaunchMonitor());
 
 					method6.invoke(newModel, value6);
 
-					Method method7 = newModelClass.getMethod("setClubLoft",
-							new Class[] { Integer.TYPE });
+					Method method7 = newModelClass.getMethod("setSimulate",
+							new Class[] { Boolean.TYPE });
 
-					Integer value7 = new Integer(oldCplModel.getClubLoft());
+					Boolean value7 = new Boolean(oldCplModel.getSimulate());
 
 					method7.invoke(newModel, value7);
 
-					Method method8 = newModelClass.getMethod("setClubSpeed",
-							new Class[] { Integer.TYPE });
+					Method method8 = newModelClass.getMethod("setActive",
+							new Class[] { Boolean.TYPE });
 
-					Integer value8 = new Integer(oldCplModel.getClubSpeed());
+					Boolean value8 = new Boolean(oldCplModel.getActive());
 
 					method8.invoke(newModel, value8);
 
-					Method method9 = newModelClass.getMethod("setFaceAngle",
+					Method method9 = newModelClass.getMethod("setClubLoft",
 							new Class[] { Integer.TYPE });
 
-					Integer value9 = new Integer(oldCplModel.getFaceAngle());
+					Integer value9 = new Integer(oldCplModel.getClubLoft());
 
 					method9.invoke(newModel, value9);
 
-					Method method10 = newModelClass.getMethod("setSwingPath",
+					Method method10 = newModelClass.getMethod("setClubSpeed",
 							new Class[] { Integer.TYPE });
 
-					Integer value10 = new Integer(oldCplModel.getSwingPath());
+					Integer value10 = new Integer(oldCplModel.getClubSpeed());
 
 					method10.invoke(newModel, value10);
 
-					Method method11 = newModelClass.getMethod("setSpinAxisAngle",
+					Method method11 = newModelClass.getMethod("setFaceAngle",
 							new Class[] { Integer.TYPE });
 
-					Integer value11 = new Integer(oldCplModel.getSpinAxisAngle());
+					Integer value11 = new Integer(oldCplModel.getFaceAngle());
 
 					method11.invoke(newModel, value11);
 
-					Method method12 = newModelClass.getMethod("setLaunchAngle",
+					Method method12 = newModelClass.getMethod("setSwingPath",
 							new Class[] { Integer.TYPE });
 
-					Integer value12 = new Integer(oldCplModel.getLaunchAngle());
+					Integer value12 = new Integer(oldCplModel.getSwingPath());
 
 					method12.invoke(newModel, value12);
 
-					Method method13 = newModelClass.getMethod("setBallSpeed",
+					Method method13 = newModelClass.getMethod("setSpinAxisAngle",
 							new Class[] { Integer.TYPE });
 
-					Integer value13 = new Integer(oldCplModel.getBallSpeed());
+					Integer value13 = new Integer(oldCplModel.getSpinAxisAngle());
 
 					method13.invoke(newModel, value13);
 
-					Method method14 = newModelClass.getMethod("setBallSpinRate",
+					Method method14 = newModelClass.getMethod("setLaunchAngle",
 							new Class[] { Integer.TYPE });
 
-					Integer value14 = new Integer(oldCplModel.getBallSpinRate());
+					Integer value14 = new Integer(oldCplModel.getLaunchAngle());
 
 					method14.invoke(newModel, value14);
 
-					Method method15 = newModelClass.getMethod("setBallAngleOfAttack",
-							new Class[] { Double.TYPE });
+					Method method15 = newModelClass.getMethod("setBallSpeed",
+							new Class[] { Integer.TYPE });
 
-					Double value15 = new Double(oldCplModel.getBallAngleOfAttack());
+					Integer value15 = new Integer(oldCplModel.getBallSpeed());
 
 					method15.invoke(newModel, value15);
 
-					Method method16 = newModelClass.getMethod("setBallCompression",
-							new Class[] { Double.TYPE });
+					Method method16 = newModelClass.getMethod("setBallSpinRate",
+							new Class[] { Integer.TYPE });
 
-					Double value16 = new Double(oldCplModel.getBallCompression());
+					Integer value16 = new Integer(oldCplModel.getBallSpinRate());
 
 					method16.invoke(newModel, value16);
 
-					Method method17 = newModelClass.getMethod("setStepTimeIncrement",
+					Method method17 = newModelClass.getMethod("setBallAngleOfAttack",
 							new Class[] { Double.TYPE });
 
-					Double value17 = new Double(oldCplModel.getStepTimeIncrement());
+					Double value17 = new Double(oldCplModel.getBallAngleOfAttack());
 
 					method17.invoke(newModel, value17);
 
-					Method method18 = newModelClass.getMethod("setWindSpeed",
-							new Class[] { Integer.TYPE });
+					Method method18 = newModelClass.getMethod("setBallCompression",
+							new Class[] { Double.TYPE });
 
-					Integer value18 = new Integer(oldCplModel.getWindSpeed());
+					Double value18 = new Double(oldCplModel.getBallCompression());
 
 					method18.invoke(newModel, value18);
 
-					Method method19 = newModelClass.getMethod("setWindDirection",
-							new Class[] { Integer.TYPE });
+					Method method19 = newModelClass.getMethod("setStepTimeIncrement",
+							new Class[] { Double.TYPE });
 
-					Integer value19 = new Integer(oldCplModel.getWindDirection());
+					Double value19 = new Double(oldCplModel.getStepTimeIncrement());
 
 					method19.invoke(newModel, value19);
 
-					Method method20 = newModelClass.getMethod("setAmbientTemp",
+					Method method20 = newModelClass.getMethod("setWindSpeed",
 							new Class[] { Integer.TYPE });
 
-					Integer value20 = new Integer(oldCplModel.getAmbientTemp());
+					Integer value20 = new Integer(oldCplModel.getWindSpeed());
 
 					method20.invoke(newModel, value20);
 
-					Method method21 = newModelClass.getMethod("setBarPressureAlt",
+					Method method21 = newModelClass.getMethod("setWindDirection",
 							new Class[] { Integer.TYPE });
 
-					Integer value21 = new Integer(oldCplModel.getBarPressureAlt());
+					Integer value21 = new Integer(oldCplModel.getWindDirection());
 
 					method21.invoke(newModel, value21);
 
-					Method method22 = newModelClass.getMethod("setRelativeHumid",
+					Method method22 = newModelClass.getMethod("setAmbientTemp",
 							new Class[] { Integer.TYPE });
 
-					Integer value22 = new Integer(oldCplModel.getRelativeHumid());
+					Integer value22 = new Integer(oldCplModel.getAmbientTemp());
 
 					method22.invoke(newModel, value22);
 
-					Method method23 = newModelClass.getMethod("setFairwayFirmness",
-							new Class[] { Double.TYPE });
+					Method method23 = newModelClass.getMethod("setBarPressureAlt",
+							new Class[] { Integer.TYPE });
 
-					Double value23 = new Double(oldCplModel.getFairwayFirmness());
+					Integer value23 = new Integer(oldCplModel.getBarPressureAlt());
 
 					method23.invoke(newModel, value23);
 
-					Method method24 = newModelClass.getMethod("setCreateDate",
-							new Class[] { Date.class });
+					Method method24 = newModelClass.getMethod("setRelativeHumid",
+							new Class[] { Integer.TYPE });
 
-					Date value24 = oldCplModel.getCreateDate();
+					Integer value24 = new Integer(oldCplModel.getRelativeHumid());
 
 					method24.invoke(newModel, value24);
 
-					Method method25 = newModelClass.getMethod("setModifiedDate",
-							new Class[] { Date.class });
+					Method method25 = newModelClass.getMethod("setFairwayFirmness",
+							new Class[] { Double.TYPE });
 
-					Date value25 = oldCplModel.getModifiedDate();
+					Double value25 = new Double(oldCplModel.getFairwayFirmness());
 
 					method25.invoke(newModel, value25);
+
+					Method method26 = newModelClass.getMethod("setCreateDate",
+							new Class[] { Date.class });
+
+					Date value26 = oldCplModel.getCreateDate();
+
+					method26.invoke(newModel, value26);
+
+					Method method27 = newModelClass.getMethod("setModifiedDate",
+							new Class[] { Date.class });
+
+					Date value27 = oldCplModel.getModifiedDate();
+
+					method27.invoke(newModel, value27);
 
 					return newModel;
 				}
@@ -1153,167 +1181,179 @@ public class ClpSerializer {
 
 					newModel.setProductSerialNo(value3);
 
-					Method method4 = oldModelClass.getMethod("getLaunchMonitor");
+					Method method4 = oldModelClass.getMethod("getCompanyId");
 
-					Boolean value4 = (Boolean)method4.invoke(oldModel,
-							(Object[])null);
+					Long value4 = (Long)method4.invoke(oldModel, (Object[])null);
 
-					newModel.setLaunchMonitor(value4);
+					newModel.setCompanyId(value4);
 
-					Method method5 = oldModelClass.getMethod("getSimulate");
+					Method method5 = oldModelClass.getMethod("getGroupId");
 
-					Boolean value5 = (Boolean)method5.invoke(oldModel,
-							(Object[])null);
+					Long value5 = (Long)method5.invoke(oldModel, (Object[])null);
 
-					newModel.setSimulate(value5);
+					newModel.setGroupId(value5);
 
-					Method method6 = oldModelClass.getMethod("getActive");
+					Method method6 = oldModelClass.getMethod("getLaunchMonitor");
 
 					Boolean value6 = (Boolean)method6.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setActive(value6);
+					newModel.setLaunchMonitor(value6);
 
-					Method method7 = oldModelClass.getMethod("getClubLoft");
+					Method method7 = oldModelClass.getMethod("getSimulate");
 
-					Integer value7 = (Integer)method7.invoke(oldModel,
+					Boolean value7 = (Boolean)method7.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setClubLoft(value7);
+					newModel.setSimulate(value7);
 
-					Method method8 = oldModelClass.getMethod("getClubSpeed");
+					Method method8 = oldModelClass.getMethod("getActive");
 
-					Integer value8 = (Integer)method8.invoke(oldModel,
+					Boolean value8 = (Boolean)method8.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setClubSpeed(value8);
+					newModel.setActive(value8);
 
-					Method method9 = oldModelClass.getMethod("getFaceAngle");
+					Method method9 = oldModelClass.getMethod("getClubLoft");
 
 					Integer value9 = (Integer)method9.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setFaceAngle(value9);
+					newModel.setClubLoft(value9);
 
-					Method method10 = oldModelClass.getMethod("getSwingPath");
+					Method method10 = oldModelClass.getMethod("getClubSpeed");
 
 					Integer value10 = (Integer)method10.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setSwingPath(value10);
+					newModel.setClubSpeed(value10);
 
-					Method method11 = oldModelClass.getMethod(
-							"getSpinAxisAngle");
+					Method method11 = oldModelClass.getMethod("getFaceAngle");
 
 					Integer value11 = (Integer)method11.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setSpinAxisAngle(value11);
+					newModel.setFaceAngle(value11);
 
-					Method method12 = oldModelClass.getMethod("getLaunchAngle");
+					Method method12 = oldModelClass.getMethod("getSwingPath");
 
 					Integer value12 = (Integer)method12.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setLaunchAngle(value12);
+					newModel.setSwingPath(value12);
 
-					Method method13 = oldModelClass.getMethod("getBallSpeed");
+					Method method13 = oldModelClass.getMethod(
+							"getSpinAxisAngle");
 
 					Integer value13 = (Integer)method13.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallSpeed(value13);
+					newModel.setSpinAxisAngle(value13);
 
-					Method method14 = oldModelClass.getMethod("getBallSpinRate");
+					Method method14 = oldModelClass.getMethod("getLaunchAngle");
 
 					Integer value14 = (Integer)method14.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallSpinRate(value14);
+					newModel.setLaunchAngle(value14);
 
-					Method method15 = oldModelClass.getMethod(
-							"getBallAngleOfAttack");
+					Method method15 = oldModelClass.getMethod("getBallSpeed");
 
-					Double value15 = (Double)method15.invoke(oldModel,
+					Integer value15 = (Integer)method15.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallAngleOfAttack(value15);
+					newModel.setBallSpeed(value15);
 
-					Method method16 = oldModelClass.getMethod(
-							"getBallCompression");
+					Method method16 = oldModelClass.getMethod("getBallSpinRate");
 
-					Double value16 = (Double)method16.invoke(oldModel,
+					Integer value16 = (Integer)method16.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallCompression(value16);
+					newModel.setBallSpinRate(value16);
 
 					Method method17 = oldModelClass.getMethod(
-							"getStepTimeIncrement");
+							"getBallAngleOfAttack");
 
 					Double value17 = (Double)method17.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setStepTimeIncrement(value17);
+					newModel.setBallAngleOfAttack(value17);
 
-					Method method18 = oldModelClass.getMethod("getWindSpeed");
+					Method method18 = oldModelClass.getMethod(
+							"getBallCompression");
 
-					Integer value18 = (Integer)method18.invoke(oldModel,
+					Double value18 = (Double)method18.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setWindSpeed(value18);
+					newModel.setBallCompression(value18);
 
 					Method method19 = oldModelClass.getMethod(
-							"getWindDirection");
+							"getStepTimeIncrement");
 
-					Integer value19 = (Integer)method19.invoke(oldModel,
+					Double value19 = (Double)method19.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setWindDirection(value19);
+					newModel.setStepTimeIncrement(value19);
 
-					Method method20 = oldModelClass.getMethod("getAmbientTemp");
+					Method method20 = oldModelClass.getMethod("getWindSpeed");
 
 					Integer value20 = (Integer)method20.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setAmbientTemp(value20);
+					newModel.setWindSpeed(value20);
 
 					Method method21 = oldModelClass.getMethod(
-							"getBarPressureAlt");
+							"getWindDirection");
 
 					Integer value21 = (Integer)method21.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBarPressureAlt(value21);
+					newModel.setWindDirection(value21);
 
-					Method method22 = oldModelClass.getMethod(
-							"getRelativeHumid");
+					Method method22 = oldModelClass.getMethod("getAmbientTemp");
 
 					Integer value22 = (Integer)method22.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setRelativeHumid(value22);
+					newModel.setAmbientTemp(value22);
 
 					Method method23 = oldModelClass.getMethod(
+							"getBarPressureAlt");
+
+					Integer value23 = (Integer)method23.invoke(oldModel,
+							(Object[])null);
+
+					newModel.setBarPressureAlt(value23);
+
+					Method method24 = oldModelClass.getMethod(
+							"getRelativeHumid");
+
+					Integer value24 = (Integer)method24.invoke(oldModel,
+							(Object[])null);
+
+					newModel.setRelativeHumid(value24);
+
+					Method method25 = oldModelClass.getMethod(
 							"getFairwayFirmness");
 
-					Double value23 = (Double)method23.invoke(oldModel,
+					Double value25 = (Double)method25.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setFairwayFirmness(value23);
+					newModel.setFairwayFirmness(value25);
 
-					Method method24 = oldModelClass.getMethod("getCreateDate");
+					Method method26 = oldModelClass.getMethod("getCreateDate");
 
-					Date value24 = (Date)method24.invoke(oldModel,
+					Date value26 = (Date)method26.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setCreateDate(value24);
+					newModel.setCreateDate(value26);
 
-					Method method25 = oldModelClass.getMethod("getModifiedDate");
+					Method method27 = oldModelClass.getMethod("getModifiedDate");
 
-					Date value25 = (Date)method25.invoke(oldModel,
+					Date value27 = (Date)method27.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setModifiedDate(value25);
+					newModel.setModifiedDate(value27);
 
 					return newModel;
 				}
@@ -1441,167 +1481,179 @@ public class ClpSerializer {
 
 					newModel.setProductSerialNo(value3);
 
-					Method method4 = oldModelClass.getMethod("getLaunchMonitor");
+					Method method4 = oldModelClass.getMethod("getCompanyId");
 
-					Boolean value4 = (Boolean)method4.invoke(oldModel,
-							(Object[])null);
+					Long value4 = (Long)method4.invoke(oldModel, (Object[])null);
 
-					newModel.setLaunchMonitor(value4);
+					newModel.setCompanyId(value4);
 
-					Method method5 = oldModelClass.getMethod("getSimulate");
+					Method method5 = oldModelClass.getMethod("getGroupId");
 
-					Boolean value5 = (Boolean)method5.invoke(oldModel,
-							(Object[])null);
+					Long value5 = (Long)method5.invoke(oldModel, (Object[])null);
 
-					newModel.setSimulate(value5);
+					newModel.setGroupId(value5);
 
-					Method method6 = oldModelClass.getMethod("getActive");
+					Method method6 = oldModelClass.getMethod("getLaunchMonitor");
 
 					Boolean value6 = (Boolean)method6.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setActive(value6);
+					newModel.setLaunchMonitor(value6);
 
-					Method method7 = oldModelClass.getMethod("getClubLoft");
+					Method method7 = oldModelClass.getMethod("getSimulate");
 
-					Integer value7 = (Integer)method7.invoke(oldModel,
+					Boolean value7 = (Boolean)method7.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setClubLoft(value7);
+					newModel.setSimulate(value7);
 
-					Method method8 = oldModelClass.getMethod("getClubSpeed");
+					Method method8 = oldModelClass.getMethod("getActive");
 
-					Integer value8 = (Integer)method8.invoke(oldModel,
+					Boolean value8 = (Boolean)method8.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setClubSpeed(value8);
+					newModel.setActive(value8);
 
-					Method method9 = oldModelClass.getMethod("getFaceAngle");
+					Method method9 = oldModelClass.getMethod("getClubLoft");
 
 					Integer value9 = (Integer)method9.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setFaceAngle(value9);
+					newModel.setClubLoft(value9);
 
-					Method method10 = oldModelClass.getMethod("getSwingPath");
+					Method method10 = oldModelClass.getMethod("getClubSpeed");
 
 					Integer value10 = (Integer)method10.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setSwingPath(value10);
+					newModel.setClubSpeed(value10);
 
-					Method method11 = oldModelClass.getMethod(
-							"getSpinAxisAngle");
+					Method method11 = oldModelClass.getMethod("getFaceAngle");
 
 					Integer value11 = (Integer)method11.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setSpinAxisAngle(value11);
+					newModel.setFaceAngle(value11);
 
-					Method method12 = oldModelClass.getMethod("getLaunchAngle");
+					Method method12 = oldModelClass.getMethod("getSwingPath");
 
 					Integer value12 = (Integer)method12.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setLaunchAngle(value12);
+					newModel.setSwingPath(value12);
 
-					Method method13 = oldModelClass.getMethod("getBallSpeed");
+					Method method13 = oldModelClass.getMethod(
+							"getSpinAxisAngle");
 
 					Integer value13 = (Integer)method13.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallSpeed(value13);
+					newModel.setSpinAxisAngle(value13);
 
-					Method method14 = oldModelClass.getMethod("getBallSpinRate");
+					Method method14 = oldModelClass.getMethod("getLaunchAngle");
 
 					Integer value14 = (Integer)method14.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallSpinRate(value14);
+					newModel.setLaunchAngle(value14);
 
-					Method method15 = oldModelClass.getMethod(
-							"getBallAngleOfAttack");
+					Method method15 = oldModelClass.getMethod("getBallSpeed");
 
-					Double value15 = (Double)method15.invoke(oldModel,
+					Integer value15 = (Integer)method15.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallAngleOfAttack(value15);
+					newModel.setBallSpeed(value15);
 
-					Method method16 = oldModelClass.getMethod(
-							"getBallCompression");
+					Method method16 = oldModelClass.getMethod("getBallSpinRate");
 
-					Double value16 = (Double)method16.invoke(oldModel,
+					Integer value16 = (Integer)method16.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBallCompression(value16);
+					newModel.setBallSpinRate(value16);
 
 					Method method17 = oldModelClass.getMethod(
-							"getStepTimeIncrement");
+							"getBallAngleOfAttack");
 
 					Double value17 = (Double)method17.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setStepTimeIncrement(value17);
+					newModel.setBallAngleOfAttack(value17);
 
-					Method method18 = oldModelClass.getMethod("getWindSpeed");
+					Method method18 = oldModelClass.getMethod(
+							"getBallCompression");
 
-					Integer value18 = (Integer)method18.invoke(oldModel,
+					Double value18 = (Double)method18.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setWindSpeed(value18);
+					newModel.setBallCompression(value18);
 
 					Method method19 = oldModelClass.getMethod(
-							"getWindDirection");
+							"getStepTimeIncrement");
 
-					Integer value19 = (Integer)method19.invoke(oldModel,
+					Double value19 = (Double)method19.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setWindDirection(value19);
+					newModel.setStepTimeIncrement(value19);
 
-					Method method20 = oldModelClass.getMethod("getAmbientTemp");
+					Method method20 = oldModelClass.getMethod("getWindSpeed");
 
 					Integer value20 = (Integer)method20.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setAmbientTemp(value20);
+					newModel.setWindSpeed(value20);
 
 					Method method21 = oldModelClass.getMethod(
-							"getBarPressureAlt");
+							"getWindDirection");
 
 					Integer value21 = (Integer)method21.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setBarPressureAlt(value21);
+					newModel.setWindDirection(value21);
 
-					Method method22 = oldModelClass.getMethod(
-							"getRelativeHumid");
+					Method method22 = oldModelClass.getMethod("getAmbientTemp");
 
 					Integer value22 = (Integer)method22.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setRelativeHumid(value22);
+					newModel.setAmbientTemp(value22);
 
 					Method method23 = oldModelClass.getMethod(
+							"getBarPressureAlt");
+
+					Integer value23 = (Integer)method23.invoke(oldModel,
+							(Object[])null);
+
+					newModel.setBarPressureAlt(value23);
+
+					Method method24 = oldModelClass.getMethod(
+							"getRelativeHumid");
+
+					Integer value24 = (Integer)method24.invoke(oldModel,
+							(Object[])null);
+
+					newModel.setRelativeHumid(value24);
+
+					Method method25 = oldModelClass.getMethod(
 							"getFairwayFirmness");
 
-					Double value23 = (Double)method23.invoke(oldModel,
+					Double value25 = (Double)method25.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setFairwayFirmness(value23);
+					newModel.setFairwayFirmness(value25);
 
-					Method method24 = oldModelClass.getMethod("getCreateDate");
+					Method method26 = oldModelClass.getMethod("getCreateDate");
 
-					Date value24 = (Date)method24.invoke(oldModel,
+					Date value26 = (Date)method26.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setCreateDate(value24);
+					newModel.setCreateDate(value26);
 
-					Method method25 = oldModelClass.getMethod("getModifiedDate");
+					Method method27 = oldModelClass.getMethod("getModifiedDate");
 
-					Date value25 = (Date)method25.invoke(oldModel,
+					Date value27 = (Date)method27.invoke(oldModel,
 							(Object[])null);
 
-					newModel.setModifiedDate(value25);
+					newModel.setModifiedDate(value27);
 
 					return newModel;
 				}
