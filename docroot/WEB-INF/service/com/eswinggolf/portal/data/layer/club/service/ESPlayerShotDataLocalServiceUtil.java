@@ -239,11 +239,6 @@ public class ESPlayerShotDataLocalServiceUtil {
 		getService().addESPlayerShotData(playerId);
 	}
 
-	public static void deleteESTrialShotData(long playerId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		getService().deleteESTrialShotData(playerId);
-	}
-
 	/**
 	* Gets all Player shot data out of the database.
 	*
@@ -254,6 +249,18 @@ public class ESPlayerShotDataLocalServiceUtil {
 		long playerId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getAllPlayerShotData(playerId);
+	}
+
+	/**
+	* Gets all Player shot data out of the database.
+	*
+	* @return
+	* @throws SystemException
+	*/
+	public static java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getAllActivePlayerShotData(
+		long playerId, boolean active)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getAllActivePlayerShotData(playerId, active);
 	}
 
 	/**

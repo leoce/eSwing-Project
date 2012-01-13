@@ -15,9 +15,14 @@
 package com.eswinggolf.portal.data.layer.club.service.impl;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import com.eswinggolf.club.profile.portlet.ActionUtil;
+import com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData;
 import com.eswinggolf.portal.data.layer.club.model.ESTrialShotData;
+import com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil;
+import com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.base.ESTrialShotDataLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.SystemException;
 
@@ -86,5 +91,41 @@ public class ESTrialShotDataLocalServiceImpl
             esTrialShotDataPersistence.findByG_TrialShotDataByDate(playerId, begin);
             
         return trialShot;
+    }
+    
+    public void deleteTrialShotData(long playerId)
+    throws SystemException {
+
+
+	List<ESTrialShotData> list = ESTrialShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
+    
+	Iterator<ESTrialShotData> iter = list.iterator();
+	
+	while (iter.hasNext()){
+		
+		ESTrialShotData trialShot = (ESTrialShotData) iter.next();		
+		
+		ESTrialShotDataLocalServiceUtil.deleteESTrialShotData(trialShot);	
+		
+		}
+
+    }
+    
+    public void transferTrialDataToShotData(long playerId)
+    throws SystemException {
+
+
+	List<ESTrialShotData> list = ESTrialShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
+    
+	Iterator<ESTrialShotData> iter = list.iterator();
+	
+	while (iter.hasNext()){
+		
+		ESPlayerShotData shotData = ActionUtil.convertShotData((ESTrialShotData) iter.next());		
+		
+		ESPlayerShotDataLocalServiceUtil.addESPlayerShotData(shotData);
+		
+		}
+
     }
 }

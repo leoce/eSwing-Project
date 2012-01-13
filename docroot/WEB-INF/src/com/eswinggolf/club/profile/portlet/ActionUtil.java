@@ -3,6 +3,7 @@
  */
 package com.eswinggolf.club.profile.portlet;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -26,12 +27,10 @@ import com.eswinggolf.portal.data.layer.club.service.ESPlayerClubLocalServiceUti
 import com.eswinggolf.portal.data.layer.club.service.ESPlayerShotDataLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.club.service.ESTrialShotDataLocalServiceUtil;
 import com.eswinggolf.portal.data.layer.model.ESPlayer;
-import com.eswinggolf.portal.data.layer.model.impl.ESPlayerImpl;
 import com.eswinggolf.portal.data.layer.service.ESPlayerLocalServiceUtil;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -230,14 +229,11 @@ public class ActionUtil {
             (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
        
        long playerId = themeDisplay.getUserId();
-       
         List<ESPlayerShotData> tempResults;
 
         try {
-        	
         	addGroupAndCompanyId(request);
-        	tempResults = ESPlayerShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
-        	
+            tempResults = ESPlayerShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
         }
 
         catch (SystemException ex) {
@@ -249,6 +245,32 @@ public class ActionUtil {
 
     }
     
+    /**
+     * Used by the view.jsp to grab the all active shot data from the database.
+     * @param request
+     * @return
+     */
+    public static List<ESPlayerShotData> getActivePlayerShotData(RenderRequest request) {
+
+    	ThemeDisplay themeDisplay =
+            (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+       
+       long playerId = themeDisplay.getUserId();
+        List<ESPlayerShotData> tempResults;
+
+        try {
+        	addGroupAndCompanyId(request);
+            tempResults = ESPlayerShotDataLocalServiceUtil.getAllActivePlayerShotData(playerId, true);
+        }
+
+        catch (SystemException ex) {
+            tempResults  = Collections.emptyList();
+
+        }
+
+        return tempResults;
+
+    }
     /**
      * Used by the view.jsp to grab the Player Shot Data by Scope Date from the database.
      * @param request
@@ -363,7 +385,7 @@ public class ActionUtil {
 
     }
     
-    public static List<ESPlayerShotData> covertShotDataList(List<ESTrialShotData> list){
+    public static List<ESPlayerShotData> convertShotDataList(List<ESTrialShotData> list){
     	
     	List<ESPlayerShotData> newList = new ArrayList<ESPlayerShotData>(list.size());
     	
@@ -538,12 +560,11 @@ public class ActionUtil {
 
     
     public static ShotData shotDataFromRequest(ActionRequest request) {
-       ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
        ShotData shotData = new ShotData();
 
        String ballCompression = ParamUtil.getString(request, "compression");
        String fairwayFirmness = ParamUtil.getString(request, "fairway");
-       Date now = new Date();
        
        double compression = 0.0d;
        double firmness = 0.0d;
@@ -566,7 +587,6 @@ public class ActionUtil {
     	   firmness = 0.8d;
        }
        
-       
    	   shotData.setClubId(ParamUtil.getLong(request, "clubName"));
        shotData.setLaunchMonitor(ParamUtil.getBoolean(request, "launchMonitor"));
        shotData.setClubSpeed(ParamUtil.getDouble(request, "clubSpeed"));
@@ -582,9 +602,6 @@ public class ActionUtil {
        shotData.setWindSpeed(ParamUtil.getDouble(request, "windSpeed"));
        shotData.set_temperature(ParamUtil.getDouble(request, "ambientTemp"));
        shotData.set_altitude(ParamUtil.getDouble(request, "barPressureAlt"));
-       //shotData.setCreateDate(now);
-       //shotData.setModifiedDate(now);
-       
        
        return shotData;
     }
@@ -609,6 +626,25 @@ public class ActionUtil {
     	return shot;
     }
     
+    public static ShotData trialDataConverter(ESTrialShotData trial, Boolean member){
+    	
+    	ShotData shot = new ShotData();
+    	
+    	
+    	shot.setClubLoft(trial.getClubLoft());
+    	shot.setClubSpeed(trial.getClubSpeed());
+		shot.setClubFaceAngle(trial.getFaceAngle());
+		shot.setClubSwingPath(trial.getSwingPath());
+    	shot.setLaunchMonitor(trial.getLaunchMonitor());
+    	shot.set_temperature(trial.getAmbientTemp());
+    	shot.set_altitude(trial.getBarPressureAlt());
+    	shot.setBallAOA(trial.getBallAngleOfAttack());
+    	shot.setWindSpeed(trial.getWindSpeed());
+    	shot.setWindDirection(trial.getWindDirection());
+    	shot.setBallSpinAxisAngle(trial.getSpinAxisAngle());
+
+    	return shot;
+    }
     public static boolean isRegisteredMember(RenderRequest request){
     	
     	ThemeDisplay themeDisplay =
@@ -630,7 +666,7 @@ public class ActionUtil {
               
         	}
         }catch(Exception se){
-        	player = new ESPlayerImpl();
+        	//player = new ESPlayerImpl();
         }
        
    
@@ -662,5 +698,10 @@ public class ActionUtil {
          }
 
     	
+    }
+    
+    public static String dateFormat(Date date){
+    	
+    	return DateFormat.getDateInstance(DateFormat.SHORT).format(date);
     }
 }

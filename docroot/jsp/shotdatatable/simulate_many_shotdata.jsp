@@ -4,27 +4,27 @@
 
 
 String redirect = ParamUtil.getString(request, "redirect");
-ESPlayerShotData shotData = (ESPlayerShotData) request.getAttribute("shotData");
+ESPlayerShotData myShotData = (ESPlayerShotData) request.getAttribute("shotData");
 ESClub club = (ESClub) request.getAttribute("club");
 
-if (shotData == null){
+if (myShotData == null){
 	
-	shotData = new ESPlayerShotDataImpl();
+	myShotData = new ESPlayerShotDataImpl();
 	
 	Calendar period = CalendarFactoryUtil.getCalendar();
 
 	period.set(period.get(Calendar.YEAR),period.get(Calendar.MONTH),period.get(Calendar.DATE));
 	
-	shotData.setCreateDate(period.getTime());
+	myShotData.setCreateDate(period.getTime());
 	
 	
 }
 
 %>
 
-<portlet:actionURL name="uploadShotData" var="uploadShotDataURL"/>
+<portlet:actionURL name="simulateSelectedShotData" var="simulateShotDataURL"/>
 
-<aui:form name="fm" action="<%= uploadShotDataURL.toString() %>" method="post" >
+<aui:form id="fm" name="fm" action="<%= simulateShotDataURL.toString() %>" method="post" >
 	<aui:fieldset>
 	<aui:input type="hidden" name="redirect" value="<%= redirect %>" />
 		<liferay-ui:panel-container id="shotDataFilter">
@@ -50,13 +50,13 @@ if (shotData == null){
     		
     					<%
 							Calendar createdDate = CalendarFactoryUtil.getCalendar();
-							createdDate.setTime(shotData.getCreateDate());
+							createdDate.setTime(myShotData.getCreateDate());
 					
 						%>
     					<aui:input 
 							name="createDate"
         					model="<%= ESPlayerShotData.class %>"
-        					bean="<%= shotData  %>"
+        					bean="<%= myShotData  %>"
 							value= "<%= createdDate %>" />
 			
     					</aui:column>
@@ -89,12 +89,12 @@ if (shotData == null){
     						
     						<%
     							Calendar endDate = CalendarFactoryUtil.getCalendar();
-										endDate.setTime(shotData.getCreateDate());
+										endDate.setTime(myShotData.getCreateDate());
     						%>
     					<aui:input 
 							name="createDate"
         					model="<%= ESPlayerShotData.class %>"
-        					bean="<%= shotData  %>"
+        					bean="<%= myShotData  %>"
 							value= "<%= endDate %>" 
 							label="end-date" />
     		
@@ -109,8 +109,7 @@ if (shotData == null){
 	
 	<liferay-ui:search-container
       emptyResultsMessage="there-are-no-shot-data"
-      delta="5"
-      rowChecker="<%= new RowChecker(renderResponse) %>">
+      delta="5" >
 
     <liferay-ui:search-container-results>
    		<%
@@ -128,23 +127,28 @@ if (shotData == null){
     <liferay-ui:search-container-row
         className="com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData"
         keyProperty="shotDataId"
-        modelVar="shotdata" >
-   
-      <liferay-ui:search-container-column-text
-          name="playerClubId"
-          property="playerClubId" />
+        modelVar="shotData" >
+        
+      <%
+			String id = String.valueOf(shotData.getShotDataId());
+			
+        	String plns = "<porlet:namespace /> ";
+			String checkBox1 = "<input type='checkbox' name='check' onClick='javascript: checkAll(this);'/>";
+			String checkBox2 = "<input type='checkbox' name='plot' value='" + id + "' onClick='javascript: checkAllRev(this);' />";
+		%>	
+   	  <liferay-ui:search-container-column-text name="<%= checkBox1 %>" value="<%= checkBox2 %>" />
       <liferay-ui:search-container-column-text
           name="club"
-          value="<%= ActionUtil.getClub(shotdata.getPlayerClubId()).getClubName() %>" />
+          value="<%= ActionUtil.getClub(shotData.getPlayerClubId()).getClubName() %>" />
       <liferay-ui:search-container-column-text
           name="club-desc"
-          value="<%= ActionUtil.getClub(shotdata.getPlayerClubId()).getClubDesc() %>" /> 
+          value="<%= ActionUtil.getClub(shotData.getPlayerClubId()).getClubDesc() %>" /> 
       <liferay-ui:search-container-column-text
           name="loft"
           property="clubLoft" />
       <liferay-ui:search-container-column-text
       	  name="createDate" 
-      	  property="createDate"/>
+      	  value="<%= ActionUtil.dateFormat(shotData.getCreateDate()) %>" />
 	</liferay-ui:search-container-row>
     
     <liferay-ui:search-iterator />
@@ -157,3 +161,35 @@ if (shotData == null){
 	</aui:button-row>
 
 </aui:form>
+<aui:script>
+
+function checkAll(obj) {
+	var items = document.getElementsByName("plot");
+	for (var i=0; i<items.length; i++) {
+		items[i].checked = obj.checked;
+	}
+}
+function checkAllRev(obj) {
+	var items = document.getElementsByName("plot");
+	var item = document.getElementsByName("check");
+	size = items.length;
+	if(size == getCheckedCount()) {
+		item.checked = true;
+	} else {
+		item.checked = false;
+	}
+}
+function getCheckedCount() {
+	var items = document.getElementsByName("plot");
+	checkedCount=0;
+	for (i=0; i< items.length; i++)
+	{
+        if(items[i].checked)
+        {
+        	checkedCount += 1;
+        }
+	}
+	return checkedCount;
+}
+
+</aui:script>

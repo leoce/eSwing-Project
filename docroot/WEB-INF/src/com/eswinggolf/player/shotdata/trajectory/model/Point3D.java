@@ -57,15 +57,21 @@ public class Point3D implements Serializable{
 	}
 	
 	public String toString(){
-		
+
 		StringBuffer sb = new StringBuffer();
-		
-		sb.append(this.pointX);
-		sb.append("|");
-		sb.append(this.pointY);
-		sb.append("|");
-		sb.append(this.pointZ);
+
+		sb.append("{");
+		sb.append("x:"+this.pointZ);
+		sb.append(",");
+		sb.append("y:"+this.pointX);
+		sb.append(",");
+		sb.append("z:"+this.pointY);
+		sb.append("}");
+		//sb.append("|");
+		//sb.append(this.pointX);
+		//sb.append("|");
+		//sb.append(this.pointY);
 		
 		return sb.toString();
-	}
+		}
 }

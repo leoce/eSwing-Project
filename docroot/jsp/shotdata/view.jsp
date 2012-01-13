@@ -6,7 +6,6 @@
 	boolean isRegistered = false;//true;
 	double firmness = 0.0d;
 	
-
 	String redirect = PortalUtil.getCurrentURL(renderRequest);
 	boolean hasShotData = false;
 	
@@ -32,12 +31,12 @@
 
 <portlet:actionURL name="addSubscription" var="addSubscriptionURL" />
 
-<portlet:renderURL var="uploadShotDataURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString()%>" >
+<portlet:renderURL var="shotDataURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>" >
 	<portlet:param name="jspPage" value="/jsp/shotdatatable/simulate_one_shotdata.jsp" />
 	<portlet:param name="redirect" value="<%= redirect %>" />
 </portlet:renderURL>
 
- <aui:form name="fm" action="<%= simulateShotDataURL.toString() %>" method="post">
+ <form id="fm" name="fm" >
 	<aui:fieldset>
 	<%
 		if (hasShotData){
@@ -49,9 +48,9 @@
     	checked="<%= shot.isLaunchMonitor() %>" 
     	label="Launch Monitor Attached" 
     	visible="<%= shot.isLaunchMonitor() %>"/>
-    <%} %>	
-	<liferay-ui:panel-container>
-	<liferay-ui:panel title="Clubs" collapsible="true" extended="true">			
+    <%} %>
+    <liferay-ui:panel-container>
+	<liferay-ui:panel title="Clubs" collapsible="true" >			
 		<aui:layout>
 		<aui:column columnWidth="50" first="true">
 			<%
@@ -152,7 +151,7 @@
 		</aui:layout>
 	</liferay-ui:panel>
 	
-	<liferay-ui:panel title="Ball Parameters" collapsible="true" extended="true">
+	<liferay-ui:panel title="Ball Parameters" collapsible="true">
 		
 		<%
 			if (hasShotData){
@@ -183,7 +182,7 @@
 		
 		<%if (hasShotData){ %>
 		<aui:input 
-			id="shotdata8" 
+			id="shotData6" 
 			name="angleOfAttack" 
 			size="20" 
 			value="<%= shot.getBallAOA() %>"/> 
@@ -194,7 +193,7 @@
 			value="<%= shot.getBallSpeed() %>"/>
 		<%} else { %>
 		<aui:input 
-			id="shotdata8" 
+			id="shotData6" 
 			name="angleOfAttack" 
 			size="20" 
 			value="0"/> 
@@ -205,30 +204,30 @@
 			value="0"/>
 		<%} %>
 	</liferay-ui:panel>
-	<liferay-ui:panel title="Environmental Factors" collapsible="true" extended="true">
+	<liferay-ui:panel title="Environmental Factors" collapsible="true" >
 	
 		<aui:layout>
 		<aui:column columnWidth="50" first="true">
 		
 		<%if (hasShotData){ %>
 			<aui:input 
-				id="shotData9" 
+				id="shotData8" 
 				name="windDirection" 
 				size="10" 
 				value="<%= shot.getWindDirection() %>"/>
 			<aui:input 
-				id="shotData10" 
+				id="shotData9" 
 				name="windSpeed" 
 				size="10" 
 				value="<%= shot.getWindSpeed() %>"/>
 		<%} else { %>
 			<aui:input 
-				id="shotData9" 
+				id="shotData8" 
 				name="windDirection" 
 				size="10" 
 				value="0"/>
 			<aui:input 
-				id="shotData10" 
+				id="shotData9" 
 				name="windSpeed" 
 				size="10" 
 				value="0"/>
@@ -237,23 +236,23 @@
 		<aui:column columnWidth="50" last="true">
 			<%if (hasShotData){ %>
 				<aui:input 
-					id="shotData11" 
+					id="shotData10" 
 					name="ambientTemp" 
 					size="10" 
 					value="<%= shot.get_temperature() %>"/>
 				<aui:input 
-					id="shotData12" 
+					id="shotData11" 
 					name="barPressureAlt" 
 					size="10" 
 					value="<%= shot.get_altitude() %>"/>
 			<%} else { %>		
 				<aui:input 
-					id="shotData11" 
+					id="shotData10" 
 					name="ambientTemp" 
 					size="10" 
 					value="0"/>
 				<aui:input 
-					id="shotData12" 
+					id="shotData11" 
 					name="barPressureAlt" 
 					size="10" 
 					value="0"/>
@@ -261,7 +260,7 @@
 		</aui:column>
 		</aui:layout>
 	</liferay-ui:panel>
-	<liferay-ui:panel title="Fairway Firmnesss" collapsible="true" extended="true">
+	<liferay-ui:panel title="Fairway Firmnesss" collapsible="true" >
 	
 		<aui:layout>
 		
@@ -287,15 +286,16 @@
 		<aui:button-row>
 			<aui:button type="button" name="upload" value="Upload Shot" onClick="javascript: openPopup('Display Shot Data');"/>
 			<aui:button type="submit" name="simulate" value="Simulate" />
-			<% if (!isRegistered) { %>
-			<aui:button type="button" name="save" value="Save & Register" onClick="<%= addSubscriptionURL.toString() %>" disabled="<%= !hasShotData %>" />
-			<%} %>
 		</aui:button-row>
 		
 	</aui:fieldset>
 	
-</aui:form>
-<aui:script>
+</form>
+<portlet:resourceURL var="actionURL">
+    <portlet:param name="fetchDataAction" value="/jsp/shotdata/data.jsp"/>
+</portlet:resourceURL>
+<script type="text/javascript">
+
 function openPopup(title){  
        AUI().use('aui-dialog', 'aui-overlay-manager', 'dd-constrain', 'aui-io', 'event', 'event-custom', function(A) {  
            var dialog = new A.Dialog({    
@@ -308,8 +308,46 @@ function openPopup(title){
            scrollbars: true
             }).render();
            
-           dialog.plug(A.Plugin.IO, {uri: '<%= uploadShotDataURL %>' });
+           dialog.plug(A.Plugin.IO, {uri: '<%= shotDataURL.toString() %>' });
            dialog.show();
         });  
 }
-</aui:script>
+AUI().use('node', 'slider', function(A) {
+
+    var mySlider = new A.Slider();
+   
+    var sliderNodeIDString = '#' + '<portlet:namespace/>' + 'shotData1';
+    mySlider.render("#horiz_value");
+   
+}); 
+jQuery(document).ready(function(){
+	jQuery.validator.addMethod("clubName", function(value, element) {
+		return (value>0);
+	}, "Please choose a club.");
+	jQuery("#fm").validate({
+		submitHandler: function() {
+			AUI().use('aui-io-request', function(A){
+				A.io.request("<%= actionURL.toString() %>", {
+					dataType: 'json',
+					form: {
+					   id: 'fm'
+					  },
+					on: {
+						success: function() {
+							var json = eval(this.get('responseData'));
+							Liferay.fire('simulate_one', { points: eval(json.points) });
+							
+						}
+					}
+					  });
+			});	
+			return false;
+		},
+		rules: {
+		    "<portlet:namespace/>clubName": "clubName"
+		  }
+	});
+
+});
+
+</script>

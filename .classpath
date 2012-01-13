@@ -19,5 +19,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/Subscriber-portlet"/>
+	<classpathentry kind="lib" path="/Subscriber-portlet/docroot/WEB-INF/lib/Subscriber-portlet-service.jar"/>
 	<classpathentry kind="output" path="docroot/WEB-INF/classes"/>
 </classpath>

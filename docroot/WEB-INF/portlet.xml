@@ -132,4 +132,23 @@
             <keywords>Trajectory Model</keywords>
         </portlet-info>
     </portlet>
+    <portlet>
+		<portlet-name>TrialShotData</portlet-name>
+		<display-name>TrialShotData</display-name>
+        <portlet-class>com.eswinggolf.player.shotdata.portlet.ESPlayerShotDataPortlet</portlet-class>
+		<init-param>
+			<name>view-jsp</name>
+			<value>/jsp/trialshotdata/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+        <resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Trial Shot Data</title>
+			<short-title>Trial Shot Data</short-title>
+			<keywords>Trial Shot Data</keywords>
+		</portlet-info>
+	</portlet>
 </portlet-app>

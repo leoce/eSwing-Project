@@ -158,6 +158,11 @@
         	<finder-column name="productSerialNo" />
         </finder>
         
+        <finder return-type="Collection" name="G_ActiveShotData">
+        	<finder-column name="playerId" />
+        	<finder-column name="active" />
+        </finder>
+        
 		<finder return-type="Collection" name="G_ShotDataByDate">
         	<finder-column name="playerId" />
         	<finder-column name="createDate" />

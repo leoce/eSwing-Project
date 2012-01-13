@@ -263,6 +263,16 @@ public class ESTrialShotDataLocalServiceUtil {
 		return getService().getClubShotDataByDate(playerId, begin, end);
 	}
 
+	public static void deleteTrialShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().deleteTrialShotData(playerId);
+	}
+
+	public static void transferTrialDataToShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().transferTrialDataToShotData(playerId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

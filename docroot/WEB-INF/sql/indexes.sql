@@ -8,6 +8,7 @@ create index IX_33D5236E on es_ESPlayerClub (groupId);
 create index IX_78832D8C on es_ESPlayerClub (playerId);
 
 create index IX_C9A8B59A on es_ESPlayerShotData (playerId);
+create index IX_7BA066AF on es_ESPlayerShotData (playerId, active_);
 create index IX_6AC16D58 on es_ESPlayerShotData (playerId, createDate);
 create index IX_D6BE7816 on es_ESPlayerShotData (playerId, createDate, createDate);
 create index IX_8EBFD840 on es_ESPlayerShotData (playerId, playerClubId);

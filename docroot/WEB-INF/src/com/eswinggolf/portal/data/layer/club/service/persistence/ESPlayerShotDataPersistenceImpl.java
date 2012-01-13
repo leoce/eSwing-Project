@@ -112,6 +112,19 @@ public class ESPlayerShotDataPersistenceImpl extends BasePersistenceImpl<ESPlaye
 			ESPlayerShotDataModelImpl.FINDER_CACHE_ENABLED,
 			FINDER_CLASS_NAME_LIST, "countByG_ProductSerialNo",
 			new String[] { Long.class.getName(), Integer.class.getName() });
+	public static final FinderPath FINDER_PATH_FIND_BY_G_ACTIVESHOTDATA = new FinderPath(ESPlayerShotDataModelImpl.ENTITY_CACHE_ENABLED,
+			ESPlayerShotDataModelImpl.FINDER_CACHE_ENABLED,
+			FINDER_CLASS_NAME_LIST, "findByG_ActiveShotData",
+			new String[] {
+				Long.class.getName(), Boolean.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_COUNT_BY_G_ACTIVESHOTDATA = new FinderPath(ESPlayerShotDataModelImpl.ENTITY_CACHE_ENABLED,
+			ESPlayerShotDataModelImpl.FINDER_CACHE_ENABLED,
+			FINDER_CLASS_NAME_LIST, "countByG_ActiveShotData",
+			new String[] { Long.class.getName(), Boolean.class.getName() });
 	public static final FinderPath FINDER_PATH_FIND_BY_G_SHOTDATABYDATE = new FinderPath(ESPlayerShotDataModelImpl.ENTITY_CACHE_ENABLED,
 			ESPlayerShotDataModelImpl.FINDER_CACHE_ENABLED,
 			FINDER_CLASS_NAME_LIST, "findByG_ShotDataByDate",
@@ -1512,6 +1525,369 @@ public class ESPlayerShotDataPersistenceImpl extends BasePersistenceImpl<ESPlaye
 	}
 
 	/**
+	 * Finds all the e s player shot datas where playerId = &#63; and active = &#63;.
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @return the matching e s player shot datas
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<ESPlayerShotData> findByG_ActiveShotData(long playerId,
+		boolean active) throws SystemException {
+		return findByG_ActiveShotData(playerId, active, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Finds a range of all the e s player shot datas where playerId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @param start the lower bound of the range of e s player shot datas to return
+	 * @param end the upper bound of the range of e s player shot datas to return (not inclusive)
+	 * @return the range of matching e s player shot datas
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<ESPlayerShotData> findByG_ActiveShotData(long playerId,
+		boolean active, int start, int end) throws SystemException {
+		return findByG_ActiveShotData(playerId, active, start, end, null);
+	}
+
+	/**
+	 * Finds an ordered range of all the e s player shot datas where playerId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @param start the lower bound of the range of e s player shot datas to return
+	 * @param end the upper bound of the range of e s player shot datas to return (not inclusive)
+	 * @param orderByComparator the comparator to order the results by
+	 * @return the ordered range of matching e s player shot datas
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<ESPlayerShotData> findByG_ActiveShotData(long playerId,
+		boolean active, int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
+		Object[] finderArgs = new Object[] {
+				playerId, active,
+				
+				String.valueOf(start), String.valueOf(end),
+				String.valueOf(orderByComparator)
+			};
+
+		List<ESPlayerShotData> list = (List<ESPlayerShotData>)FinderCacheUtil.getResult(FINDER_PATH_FIND_BY_G_ACTIVESHOTDATA,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_ESPLAYERSHOTDATA_WHERE);
+
+			query.append(_FINDER_COLUMN_G_ACTIVESHOTDATA_PLAYERID_2);
+
+			query.append(_FINDER_COLUMN_G_ACTIVESHOTDATA_ACTIVE_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(ESPlayerShotDataModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(playerId);
+
+				qPos.add(active);
+
+				list = (List<ESPlayerShotData>)QueryUtil.list(q, getDialect(),
+						start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(FINDER_PATH_FIND_BY_G_ACTIVESHOTDATA,
+						finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(FINDER_PATH_FIND_BY_G_ACTIVESHOTDATA,
+						finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Finds the first e s player shot data in the ordered set where playerId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @param orderByComparator the comparator to order the set by
+	 * @return the first matching e s player shot data
+	 * @throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException if a matching e s player shot data could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public ESPlayerShotData findByG_ActiveShotData_First(long playerId,
+		boolean active, OrderByComparator orderByComparator)
+		throws NoSuchESPlayerShotDataException, SystemException {
+		List<ESPlayerShotData> list = findByG_ActiveShotData(playerId, active,
+				0, 1, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("playerId=");
+			msg.append(playerId);
+
+			msg.append(", active=");
+			msg.append(active);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchESPlayerShotDataException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Finds the last e s player shot data in the ordered set where playerId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @param orderByComparator the comparator to order the set by
+	 * @return the last matching e s player shot data
+	 * @throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException if a matching e s player shot data could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public ESPlayerShotData findByG_ActiveShotData_Last(long playerId,
+		boolean active, OrderByComparator orderByComparator)
+		throws NoSuchESPlayerShotDataException, SystemException {
+		int count = countByG_ActiveShotData(playerId, active);
+
+		List<ESPlayerShotData> list = findByG_ActiveShotData(playerId, active,
+				count - 1, count, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("playerId=");
+			msg.append(playerId);
+
+			msg.append(", active=");
+			msg.append(active);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchESPlayerShotDataException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Finds the e s player shot datas before and after the current e s player shot data in the ordered set where playerId = &#63; and active = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param shotDataId the primary key of the current e s player shot data
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @param orderByComparator the comparator to order the set by
+	 * @return the previous, current, and next e s player shot data
+	 * @throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException if a e s player shot data with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public ESPlayerShotData[] findByG_ActiveShotData_PrevAndNext(
+		long shotDataId, long playerId, boolean active,
+		OrderByComparator orderByComparator)
+		throws NoSuchESPlayerShotDataException, SystemException {
+		ESPlayerShotData esPlayerShotData = findByPrimaryKey(shotDataId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			ESPlayerShotData[] array = new ESPlayerShotDataImpl[3];
+
+			array[0] = getByG_ActiveShotData_PrevAndNext(session,
+					esPlayerShotData, playerId, active, orderByComparator, true);
+
+			array[1] = esPlayerShotData;
+
+			array[2] = getByG_ActiveShotData_PrevAndNext(session,
+					esPlayerShotData, playerId, active, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected ESPlayerShotData getByG_ActiveShotData_PrevAndNext(
+		Session session, ESPlayerShotData esPlayerShotData, long playerId,
+		boolean active, OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_ESPLAYERSHOTDATA_WHERE);
+
+		query.append(_FINDER_COLUMN_G_ACTIVESHOTDATA_PLAYERID_2);
+
+		query.append(_FINDER_COLUMN_G_ACTIVESHOTDATA_ACTIVE_2);
+
+		if (orderByComparator != null) {
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			if (orderByFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(ESPlayerShotDataModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(playerId);
+
+		qPos.add(active);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByValues(esPlayerShotData);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<ESPlayerShotData> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
 	 * Finds all the e s player shot datas where playerId = &#63; and createDate = &#63;.
 	 *
 	 * @param playerId the player id to search with
@@ -2044,6 +2420,21 @@ public class ESPlayerShotDataPersistenceImpl extends BasePersistenceImpl<ESPlaye
 	}
 
 	/**
+	 * Removes all the e s player shot datas where playerId = &#63; and active = &#63; from the database.
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByG_ActiveShotData(long playerId, boolean active)
+		throws SystemException {
+		for (ESPlayerShotData esPlayerShotData : findByG_ActiveShotData(
+				playerId, active)) {
+			remove(esPlayerShotData);
+		}
+	}
+
+	/**
 	 * Removes all the e s player shot datas where playerId = &#63; and createDate = &#63; from the database.
 	 *
 	 * @param playerId the player id to search with
@@ -2241,6 +2632,65 @@ public class ESPlayerShotDataPersistenceImpl extends BasePersistenceImpl<ESPlaye
 	}
 
 	/**
+	 * Counts all the e s player shot datas where playerId = &#63; and active = &#63;.
+	 *
+	 * @param playerId the player id to search with
+	 * @param active the active to search with
+	 * @return the number of matching e s player shot datas
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByG_ActiveShotData(long playerId, boolean active)
+		throws SystemException {
+		Object[] finderArgs = new Object[] { playerId, active };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_G_ACTIVESHOTDATA,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_ESPLAYERSHOTDATA_WHERE);
+
+			query.append(_FINDER_COLUMN_G_ACTIVESHOTDATA_PLAYERID_2);
+
+			query.append(_FINDER_COLUMN_G_ACTIVESHOTDATA_ACTIVE_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(playerId);
+
+				qPos.add(active);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_G_ACTIVESHOTDATA,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
 	 * Counts all the e s player shot datas where playerId = &#63; and createDate = &#63;.
 	 *
 	 * @param playerId the player id to search with
@@ -2401,6 +2851,8 @@ public class ESPlayerShotDataPersistenceImpl extends BasePersistenceImpl<ESPlaye
 	private static final String _FINDER_COLUMN_G_PRODUCTSERIALNO_PLAYERID_2 = "esPlayerShotData.playerId = ? AND ";
 	private static final String _FINDER_COLUMN_G_PRODUCTSERIALNO_PRODUCTSERIALNO_2 =
 		"esPlayerShotData.productSerialNo = ?";
+	private static final String _FINDER_COLUMN_G_ACTIVESHOTDATA_PLAYERID_2 = "esPlayerShotData.playerId = ? AND ";
+	private static final String _FINDER_COLUMN_G_ACTIVESHOTDATA_ACTIVE_2 = "esPlayerShotData.active = ?";
 	private static final String _FINDER_COLUMN_G_SHOTDATABYDATE_PLAYERID_2 = "esPlayerShotData.playerId = ? AND ";
 	private static final String _FINDER_COLUMN_G_SHOTDATABYDATE_CREATEDATE_1 = "esPlayerShotData.createDate IS NULL";
 	private static final String _FINDER_COLUMN_G_SHOTDATABYDATE_CREATEDATE_2 = "esPlayerShotData.createDate = ?";

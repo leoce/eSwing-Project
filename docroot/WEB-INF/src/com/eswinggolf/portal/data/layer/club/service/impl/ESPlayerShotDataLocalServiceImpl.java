@@ -108,23 +108,7 @@ public class ESPlayerShotDataLocalServiceImpl
  
     }
 
-    public void deleteESTrialShotData(long playerId)
-    throws SystemException {
-
-
-	List<ESTrialShotData> list = ESTrialShotDataLocalServiceUtil.getAllPlayerShotData(playerId);
     
-	Iterator<ESTrialShotData> iter = list.iterator();
-	
-	while (iter.hasNext()){
-		
-		ESTrialShotData trialShot = (ESTrialShotData) iter.next();		
-		
-		ESTrialShotDataLocalServiceUtil.deleteESTrialShotData(trialShot);	
-		
-		}
-
-    }
 
     /**
      * Gets all Player shot data out of the database.
@@ -137,6 +121,20 @@ public class ESPlayerShotDataLocalServiceImpl
 
         List<ESPlayerShotData> shotData =
             esPlayerShotDataPersistence.findByG_PlayerShotData(playerId);
+        return shotData;
+    }
+    
+    /**
+     * Gets all Player shot data out of the database.
+     *
+     * @return
+     * @throws SystemException
+     */
+    public List<ESPlayerShotData> getAllActivePlayerShotData(long playerId, boolean active)
+        throws SystemException {
+
+        List<ESPlayerShotData> shotData =
+            esPlayerShotDataPersistence.findByG_ActiveShotData(playerId, active);
         return shotData;
     }
     

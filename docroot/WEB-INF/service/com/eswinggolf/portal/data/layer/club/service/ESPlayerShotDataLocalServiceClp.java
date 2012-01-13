@@ -414,13 +414,16 @@ public class ESPlayerShotDataLocalServiceClp
 		}
 	}
 
-	public void deleteESTrialShotData(long playerId)
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getAllPlayerShotData(
+		long playerId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		MethodHandler methodHandler = new MethodHandler(_deleteESTrialShotDataMethodKey14,
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getAllPlayerShotDataMethodKey14,
 				playerId);
 
 		try {
-			_classLoaderProxy.invoke(methodHandler);
+			returnObj = _classLoaderProxy.invoke(methodHandler);
 		}
 		catch (Throwable t) {
 			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
@@ -435,15 +438,17 @@ public class ESPlayerShotDataLocalServiceClp
 					" is not a valid exception");
 			}
 		}
+
+		return (java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData>)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getAllPlayerShotData(
-		long playerId)
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> getAllActivePlayerShotData(
+		long playerId, boolean active)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_getAllPlayerShotDataMethodKey15,
-				playerId);
+		MethodHandler methodHandler = new MethodHandler(_getAllActivePlayerShotDataMethodKey15,
+				playerId, active);
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -592,10 +597,10 @@ public class ESPlayerShotDataLocalServiceClp
 			boolean.class);
 	private MethodKey _addESPlayerShotDataMethodKey13 = new MethodKey(_classLoaderProxy.getClassName(),
 			"addESPlayerShotData", long.class);
-	private MethodKey _deleteESTrialShotDataMethodKey14 = new MethodKey(_classLoaderProxy.getClassName(),
-			"deleteESTrialShotData", long.class);
-	private MethodKey _getAllPlayerShotDataMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
+	private MethodKey _getAllPlayerShotDataMethodKey14 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getAllPlayerShotData", long.class);
+	private MethodKey _getAllActivePlayerShotDataMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
+			"getAllActivePlayerShotData", long.class, boolean.class);
 	private MethodKey _getAllClubShotByPlayerMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getAllClubShotByPlayer", long.class, long.class);
 	private MethodKey _getClubShotDataByDateMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),

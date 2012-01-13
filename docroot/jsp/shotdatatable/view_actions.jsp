@@ -7,7 +7,7 @@ ESPlayerShotData myShotData = (ESPlayerShotData) row.getObject();
 long groupId = 10171;//themeDisplay.getLayout().getGroupId();
 String name = ESPlayerShotData.class.getName();
 String primKey = String.valueOf(myShotData.getPrimaryKey());
-
+System.out.println("Primary Key:"+primKey);
 ESClub club = ActionUtil.getClub(myShotData.getPlayerClubId());
 
 

@@ -19,11 +19,24 @@ if (shotData == null){
 	
 }
 
+
 %>
 
 <portlet:actionURL name="uploadShotData" var="uploadShotDataURL"/>
 
-<aui:form name="fm" action="<%= uploadShotDataURL.toString() %>" method="post" >
+ <portlet:actionURL name="shareShotData" var="shareShotDataURL">
+	<portlet:param name="jspPage" value="/jsp/shotdatatable/view_actions.jsp" />
+</portlet:actionURL>
+
+<portlet:actionURL name="activateShotData" var="activateShotDataURL">
+	<portlet:param name="jspPage" value="/jsp/shotdatatable/view_actions.jsp" />
+</portlet:actionURL>
+
+<portlet:actionURL name="deactivateShotData" var="deactivateShotDataURL">
+	<portlet:param name="jspPage" value="/jsp/shotdatatable/view_actions.jsp" />
+</portlet:actionURL>
+
+<aui:form name="fm" >
 	<aui:fieldset>
 		<liferay-ui:panel-container id="shotDataFilter">
 			<liferay-ui:panel title="Filter Shot Data" collapsible="true" extended="true">
@@ -104,16 +117,16 @@ if (shotData == null){
 		</liferay-ui:panel-container>
 		
 		<aui:button-row>
-			<aui:button type="button" name="share" value="Share" />
-			<aui:button type="button" name="activate" value="Activate" />
-			<aui:button type="button" name="deactivate" value="Deactivate" />
+			<aui:button type="button" name="share" value="Share" onClick="<%= shareShotDataURL.toString() %>"/>
+			<aui:button type="button" name="activate" value="Activate" onClick="<%= activateShotDataURL.toString() %>"/>
+			<aui:button type="button" name="deactivate" value="Deactivate" onClick="<%= deactivateShotDataURL.toString() %>"/>
 		</aui:button-row>
 	</aui:fieldset>
 	</aui:form>
 	
 <liferay-ui:search-container
       emptyResultsMessage="there-are-no-shot-data"
-      delta="5"
+      delta="10"
       rowChecker="<%= new RowChecker(renderResponse) %>">
 
     <liferay-ui:search-container-results>
@@ -133,25 +146,24 @@ if (shotData == null){
         className="com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData"
         keyProperty="shotDataId"
         modelVar="shotdata" >
-       
+		
       <liferay-ui:search-container-column-text
           name="club"
-          value="<%= ActionUtil.getClub(shotdata.getPlayerClubId()).getClubName() %>" />
+          value="<%= ActionUtil.getClub(shotdata.getPlayerClubId()).getClubName() %>" orderable="<%= true %>" orderableProperty="playerClubId"/>
       <liferay-ui:search-container-column-text
           name="club-desc"
           value="<%= ActionUtil.getClub(shotdata.getPlayerClubId()).getClubDesc() %>" />  
       <liferay-ui:search-container-column-text
           name="loft"
-          property="clubLoft" />
+          property="clubLoft" orderable="<%= true %>" orderableProperty="clubLoft" />
       <liferay-ui:search-container-column-text
       	  name="createDate" 
-      	  property="createDate"/>      	  
+      	  value="<%= ActionUtil.dateFormat(shotdata.getCreateDate()) %>" orderable="<%= true %>" orderableProperty="createDate"/>      	  
       <liferay-ui:search-container-column-text name="Active" >
-      		<aui:input type="checkbox" name="active" value="<%= shotdata.isActive() %>" />
-      </liferay-ui:search-container-column-text>
-      
+      		<aui:input type="checkbox" name="active" value="<%= shotdata.isActive() %>" disabled="<%= true %>"/>
+      </liferay-ui:search-container-column-text>      
        <liferay-ui:search-container-column-jsp
-          path="/jsp/clubtable/view_actions.jsp"
+          path="/jsp/shotdatatable/view_actions.jsp"
           align="right" />
 	</liferay-ui:search-container-row>
     

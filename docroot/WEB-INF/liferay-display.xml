@@ -9,5 +9,6 @@
 		<portlet id="ShotData" />
 		<portlet id="ShotDataColumn" />
 		<portlet id="TrajectorySimulation" />
+		<portlet id="TrialShotData" />
 	</category>
 </display>

@@ -475,6 +475,52 @@ public class ESTrialShotDataLocalServiceClp
 		return (java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData>)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public void deleteTrialShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_deleteTrialShotDataMethodKey16,
+				playerId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public void transferTrialDataToShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_transferTrialDataToShotDataMethodKey17,
+				playerId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -523,4 +569,8 @@ public class ESTrialShotDataLocalServiceClp
 	private MethodKey _getClubShotDataByDateMethodKey15 = new MethodKey(_classLoaderProxy.getClassName(),
 			"getClubShotDataByDate", long.class, java.util.Date.class,
 			java.util.Date.class);
+	private MethodKey _deleteTrialShotDataMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
+			"deleteTrialShotData", long.class);
+	private MethodKey _transferTrialDataToShotDataMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+			"transferTrialDataToShotData", long.class);
 }

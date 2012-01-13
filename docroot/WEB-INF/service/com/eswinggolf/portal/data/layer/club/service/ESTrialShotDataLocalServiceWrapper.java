@@ -262,6 +262,16 @@ public class ESTrialShotDataLocalServiceWrapper
 			begin, end);
 	}
 
+	public void deleteTrialShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_esTrialShotDataLocalService.deleteTrialShotData(playerId);
+	}
+
+	public void transferTrialDataToShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_esTrialShotDataLocalService.transferTrialDataToShotData(playerId);
+	}
+
 	public ESTrialShotDataLocalService getWrappedESTrialShotDataLocalService() {
 		return _esTrialShotDataLocalService;
 	}

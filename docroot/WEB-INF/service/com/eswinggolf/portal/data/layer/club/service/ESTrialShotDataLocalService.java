@@ -240,4 +240,10 @@ public interface ESTrialShotDataLocalService {
 	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESTrialShotData> getClubShotDataByDate(
 		long playerId, java.util.Date begin, java.util.Date end)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public void deleteTrialShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public void transferTrialDataToShotData(long playerId)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

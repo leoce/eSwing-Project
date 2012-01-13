@@ -64,6 +64,10 @@ public class ShotData {
 	private double ballCompression =1.0d;   // value may varies from Low, Normal, High, Limited Flight
 	private double ballLaunchAngle;  //without LM club loft angle, with LM within shot data packet
  
+	// fairway firmness Parameters
+	
+	private double firmness;
+	
 	public final static double BALL_MASS = (BALL_WEIGHT/OUNCE_PER_POUND)/GRAVITY;
 	public final static double BALL_RADIUS = (BALL_DIAMETER/2)/12;
 	public final static double BALL_X_SECTION_AREA = Math.PI * (Math.pow(BALL_RADIUS, 2));
@@ -92,6 +96,7 @@ public class ShotData {
 		this._altitude = shot._altitude;
 		this.airDensity = shot.airDensity;
 		this._temperature = shot._temperature;
+		this.firmness = shot.firmness;
 		
 	}
 	
@@ -111,6 +116,7 @@ public class ShotData {
 		this._altitude = 0.0d;
 		this.airDensity = 0.0d;
 		this._temperature = 0.0d;
+		this.firmness = 0.0d;
 	}
 	public double getKa() {
 		return this.ka;
@@ -466,6 +472,21 @@ public class ShotData {
 	 */
 	public void setBallSideSpin(double ballSideSpin) {
 		this.ballSideSpin = ballSideSpin;
+	}
+
+	
+	/**
+	 * @return the firmness
+	 */
+	public double getFirmness() {
+		return firmness;
+	}
+
+	/**
+	 * @param firmness the firmness to set
+	 */
+	public void setFirmness(double firmness) {
+		this.firmness = firmness;
 	}
 
 	public static void main(String[] args) {

@@ -31,6 +31,8 @@
 		<icon>/icon.png</icon>
 		<instanceable>true</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-javascript>https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js</header-portlet-javascript>
+		<header-portlet-javascript>http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js</header-portlet-javascript>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>ClubProfile-portlet</css-class-wrapper>
 		<add-default-resource>true</add-default-resource>
@@ -48,8 +50,20 @@
 		<icon>/icon.png</icon>
 		<instanceable>true</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-javascript>https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js</header-portlet-javascript>
+		<footer-portlet-javascript>/js/shotdata.js</footer-portlet-javascript>
+		<css-class-wrapper>ClubProfile-portlet</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>TrialShotData</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>true</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-javascript>https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js</header-portlet-javascript>
+		<header-portlet-javascript>http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js</header-portlet-javascript>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>ClubProfile-portlet</css-class-wrapper>
+		<add-default-resource>true</add-default-resource>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>

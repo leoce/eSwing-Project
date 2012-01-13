@@ -430,6 +430,117 @@ public interface ESPlayerShotDataPersistence extends BasePersistence<ESPlayerSho
 			com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Finds all the e s player shot datas where playerId = &#63; and active = &#63;.
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @return the matching e s player shot datas
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> findByG_ActiveShotData(
+		long playerId, boolean active)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Finds a range of all the e s player shot datas where playerId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @param start the lower bound of the range of e s player shot datas to return
+	* @param end the upper bound of the range of e s player shot datas to return (not inclusive)
+	* @return the range of matching e s player shot datas
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> findByG_ActiveShotData(
+		long playerId, boolean active, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Finds an ordered range of all the e s player shot datas where playerId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @param start the lower bound of the range of e s player shot datas to return
+	* @param end the upper bound of the range of e s player shot datas to return (not inclusive)
+	* @param orderByComparator the comparator to order the results by
+	* @return the ordered range of matching e s player shot datas
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData> findByG_ActiveShotData(
+		long playerId, boolean active, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Finds the first e s player shot data in the ordered set where playerId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @param orderByComparator the comparator to order the set by
+	* @return the first matching e s player shot data
+	* @throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException if a matching e s player shot data could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData findByG_ActiveShotData_First(
+		long playerId, boolean active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Finds the last e s player shot data in the ordered set where playerId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @param orderByComparator the comparator to order the set by
+	* @return the last matching e s player shot data
+	* @throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException if a matching e s player shot data could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData findByG_ActiveShotData_Last(
+		long playerId, boolean active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Finds the e s player shot datas before and after the current e s player shot data in the ordered set where playerId = &#63; and active = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param shotDataId the primary key of the current e s player shot data
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @param orderByComparator the comparator to order the set by
+	* @return the previous, current, and next e s player shot data
+	* @throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException if a e s player shot data with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public com.eswinggolf.portal.data.layer.club.model.ESPlayerShotData[] findByG_ActiveShotData_PrevAndNext(
+		long shotDataId, long playerId, boolean active,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.eswinggolf.portal.data.layer.club.NoSuchESPlayerShotDataException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Finds all the e s player shot datas where playerId = &#63; and createDate = &#63;.
 	*
 	* @param playerId the player id to search with
@@ -613,6 +724,16 @@ public interface ESPlayerShotDataPersistence extends BasePersistence<ESPlayerSho
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Removes all the e s player shot datas where playerId = &#63; and active = &#63; from the database.
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByG_ActiveShotData(long playerId, boolean active)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Removes all the e s player shot datas where playerId = &#63; and createDate = &#63; from the database.
 	*
 	* @param playerId the player id to search with
@@ -661,6 +782,17 @@ public interface ESPlayerShotDataPersistence extends BasePersistence<ESPlayerSho
 	* @throws SystemException if a system exception occurred
 	*/
 	public int countByG_ProductSerialNo(long playerId, int productSerialNo)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Counts all the e s player shot datas where playerId = &#63; and active = &#63;.
+	*
+	* @param playerId the player id to search with
+	* @param active the active to search with
+	* @return the number of matching e s player shot datas
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByG_ActiveShotData(long playerId, boolean active)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
